@@ -1,0 +1,701 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="es" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>2.2. Distribución binomial &#8212; Notas de Física Experimental</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/myfile.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/.ipynb_checkpoints/myfile-checkpoint.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/translations.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/part4/dist-binomial';</script>
+    <link rel="index" title="Índice" href="../../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../../search.html" />
+    <link rel="next" title="2.3. Ejercicios" href="ejercicios-part4.html" />
+    <link rel="prev" title="2.1. Definiciones básicas" href="esta-def.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="es"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Saltar al contenido principal</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/Logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../../_static/Logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    Notas de Física experimental
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Volumen 1</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../part1/intro-gen1.html">1. Generalidades</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../part1/notacion.html">1.1. Notación correcta</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../part1/orden-magnitud.html">1.2. Órdenes de magnitud, potencias de 10 y escala de decibeles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../part1/cifras-significativas.html">1.3. Cifras significativas y redondeo de cifras</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../part1/tablas.html">1.4. Recopilación de datos experimentales: tablas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../part1/ejercicios-part1.html">1.5. Ejercicios</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="intro-estadistica.html">2. Conceptos básicos de estadística</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="esta-def.html">2.1. Definiciones básicas</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">2.2. Distribución binomial</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ejercicios-part4.html">2.3. Ejercicios</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../part2/intro-incertidumbre.html">3. Incertidumbre</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../part2/definicion-incertidumbre.html">3.1. Definición de la Incertidumbre</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../part2/errores.html">3.2. Incertidumbres aleatorias y errores sistemáticos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../part2/precision-exactitud.html">3.3. Precision y Exactitud</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../part2/reporte-incertidumbre.html">3.4. Reporte de la Incertidumbre</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../part2/estimacion-incertidumbre.html">3.5. Estimación incertidumbre</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../part2/incertidumbre-unamedida.html">3.6. Incertidumbre de una única medida</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../part2/error-relativo.html">3.7. Incertidumbre relativa</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../part2/error-indirecto.html">3.8. Determinación de la incertidumbre de una variable indirecta</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../part2/ejercicios-part2.html">3.9. Ejercicios</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../part3/intro-graficas.html">4. Graficación de datos</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../part3/graficas.html">4.1. Graficación de datos experimentales</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../part3/linearizacion.html">4.2. Linearización de los datos experimentales</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../part3/ajusteLineal.html">4.3. Ajuste lineal de datos experimentales</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../part3/ejercicios-part3.html">4.4. Ejercicios</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Volumen 2</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../part5/intro-estadistica2.html">5. Conceptos de estadística para el análisis de la incertidumbre aleatoria</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../part5/def-estadistica.html">5.1. Función densidad de probabilidad</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../part5/distNormal.html">5.2. Distribución normal o <em>Gaussiana</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../part5/distPoisson.html">5.3. Distribución de Poisson</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../part5/ejercicios-part5.html">5.4. Ejercicios</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../part6/intro-errorEstandar.html">6. Incertidumbre de procesos aleatorios</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../part6/teoremaLC.html">6.1. Teorema del límite central</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../part6/errorEstandar.html">6.2. Incertidumbre estándar</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../part6/justificacion-media.html">6.3. Demostraciones del valor más probable y de la incertidumbre estándar</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../part6/IntervaloConfianza.html">6.4. Intervalos de confianza</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../part6/propagacionError.html">6.5. Propagación de la incertidumbre</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../part6/comparaResul.html">6.6. Comparación de resultados</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../part6/ejercicios-part6.html">6.7. Ejercicios</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../part7/intro-ajuste.html">7. Método de ajuste de datos</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../part7/minimosCuad.html">7.1. Método de mínimos cuadrados</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../part7/AjusteNolineal.html">7.2. Método de ajuste no lineal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../part7/InterExtrapolacion.html">7.3. Interpolación y extrapolación de datos experimentales</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../part7/ejercicios-part7.html">7.4. Ejercicios</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Volumen 3</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../part8/intro-complemento-error.html">8. Tópicos complementarios sobre análisis de la incertidumbre</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../part8/error-Varios.html">8.1. Criterio de Chauvenet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../part8/error-dominante.html">8.2. Incertidumbre dominante</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../part8/combinacion-resultados.html">8.3. Combinación de resultados</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../part8/GUM-basico.html">8.4. GUM: Guía para el reporte de la incertidumbre experimental</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../part8/t-student.html">8.5. Distribución y corrección de t de student</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../part8/ejercicios-part8.html">8.6. Ejercicios</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../part9/intro-complemento-ajuste.html">9. Conceptos avanzados sobre ajuste de datos</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../part9/residuos.html">9.1. Residuos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../part9/chiCuadrado.html">9.2. Chi-cuadrado <span class="math notranslate nohighlight">\(\chi^2\)</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../part9/ejercicios-part9.html">9.3. Ejercicios</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Complementos</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../experimentos.html">10. Guía de experimentos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ipynbs/simulaciones.html">11. Compendio de simulaciones</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../ipynbs/auxProgramas.html">Programas usados en el libro</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Versiones.html">Versiones: actualizaciones y correcciones</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../volumen-ref.html">Referencias</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li>
+<button onclick="initThebeSBT()"
+  class="btn btn-sm btn-launch-thebe dropdown-item"
+  title="Launch Thebe"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="btn__text-container">Live Code</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Descarga esta pagina">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/docs/part4/dist-binomial.ipynb" target="_blank"
+   class="btn btn-sm btn-download-notebook-button dropdown-item"
+   title="Descargar archivo de cuaderno"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-code"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="../../_sources/docs/part4/dist-binomial.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Descargar archivo fuente"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Imprimir en PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Modo de pantalla completa"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="claro/oscuro" aria-label="claro/oscuro" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Búsqueda" aria-label="Búsqueda" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Distribución binomial</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contenido </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lanzamiento-de-un-dado">2.2.1. Lanzamiento de un dado</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#definicion-de-la-distribucion-de-probabilidad-binomial">2.2.2. Definición de la distribución de probabilidad binomial</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#media-y-desviacion-estandar-de-la-distribucion-binomial">2.2.3. Media y desviación estándar de la distribución binomial</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <div class="tex2jax_ignore mathjax_ignore section" id="distribucion-binomial">
+<span id="sec-distbinomial"></span><h1><span class="section-number">2.2. </span>Distribución binomial<a class="headerlink" href="#distribucion-binomial" title="Enlazar permanentemente con este título">#</a></h1>
+<p>A continuación se presenta la primera distribución estadística de interés, precedida por unas definiciones necesarias para poder construir la distribución. El objetivo es sentar las bases para entender y poder aplicar la distribución binomial, por lo que un tratamiento riguroso de la misma se dejará para los cursos con enfoque a estadística y probabilidad. Aunque la distribución binomial no se encuentra generalmente en el estudio de las incertidumbres, tiene una gran relevancia en términos teóricos, y más importante aún, de ella se puede derivar la distribución normal o Gaussiana, que es de gran valor en el análisis de la incertidumbre.</p>
+<div class="section" id="lanzamiento-de-un-dado">
+<span id="subsec-dado"></span><h2><span class="section-number">2.2.1. </span>Lanzamiento de un dado<a class="headerlink" href="#lanzamiento-de-un-dado" title="Enlazar permanentemente con este título">#</a></h2>
+<div class="margin figure align-default" id="fig-dado">
+<a class="reference internal image-reference" href="../../_images/dado.jpg"><img alt="../../_images/dado.jpg" src="../../_images/dado.jpg" style="width: 175.00000000000003px; height: 175.00000000000003px;" /></a>
+<p class="caption"><span class="caption-number">Figura 2.3 </span><span class="caption-text">Dado de seis caras</span><a class="headerlink" href="#fig-dado" title="Enlace permanente a esta imagen">#</a></p>
+</div>
+<p>Para comprender la información que da la distribución binomial es bueno comenzar con un ejemplo. Suponga que para un dado perfecto de seis caras (<a class="reference internal" href="#fig-dado"><span class="std std-numref">Figura 2.3</span></a>) se desea conocer la probabilidad de obtener dos veces «cuatro», luego de lanzar el dado tres veces. Lo primero que hay que conocer es la probabilidad de obtener un cuatro luego de un lanzamiento. Como el dado tiene seis caras y solo en una de ellas está el número cuatro, se espera una probabilidad de <span class="math notranslate nohighlight">\(1/6\)</span> de obtener un cuatro. De forma complementaria, la probabilidad de obtener un número diferente a cuatro será de <span class="math notranslate nohighlight">\(5/6\)</span>. Dicho en términos de porcentaje, se tiene una probabilidad de <span class="math notranslate nohighlight">\(16.67 \ \%\)</span> de obtener un cuatro y <span class="math notranslate nohighlight">\(83.33 \ \%\)</span> de no obtenerlo.</p>
+<p>Llamando al evento de obtener «cuatro» <strong>Acierto</strong> y a cualquier otro evento <strong>Desacierto</strong>, y denotando los eventos como <span class="math notranslate nohighlight">\(A\)</span> y <span class="math notranslate nohighlight">\(D\)</span> respectivamente, todos los posibles resultados al lanzar el dado tres veces o al lanzar tres dados diferentes<a class="footnote-reference brackets" href="#ergodicidad" id="id1">1</a> se presentan en la <a class="reference internal" href="#fig-permutacion"><span class="std std-numref">Figura 2.4</span></a> y son en total ocho. Esto se conoce como número de <strong>permutaciones</strong> posibles.</p>
+<div class="margin-caption figure align-default" id="fig-permutacion">
+<img alt="../../_images/permutacion.svg" src="../../_images/permutacion.svg" /><p class="caption"><span class="caption-number">Figura 2.4 </span><span class="caption-text">Número de permutaciones posibles al lanzar un dado tres veces y considerar el resultado «cuatro» como acierto y el resto desacierto.</span><a class="headerlink" href="#fig-permutacion" title="Enlace permanente a esta imagen">#</a></p>
+</div>
+<p>Ahora, de todas las permutaciones posibles se llamará <strong>combinacion</strong> a todos los casos en que luego de los tres lanzamientos se obtienen dos aciertos, sin importar el orden en que ocurren dichos aciertos. En la <a class="reference internal" href="#fig-combinacion"><span class="std std-numref">Figura 2.5</span></a> se puede observar que para el ejemplo hay tres combinaciones posibles para obtener dos aciertos.</p>
+<div class="margin-caption figure align-default" id="fig-combinacion">
+<img alt="../../_images/combinacion.svg" src="../../_images/combinacion.svg" /><p class="caption"><span class="caption-number">Figura 2.5 </span><span class="caption-text">Número de combinaciones posibles al lanzar un dado tres veces y obtener dos aciertos (casos resaltados).</span><a class="headerlink" href="#fig-combinacion" title="Enlace permanente a esta imagen">#</a></p>
+</div>
+<p>Otra forma de verlo es escribiendo las combinaciones posibles: <span class="math notranslate nohighlight">\((A,A,D)\)</span>, <span class="math notranslate nohighlight">\((A,D,A)\)</span> y <span class="math notranslate nohighlight">\((D,A,A)\)</span>, es decir tres combinaciones posibles. La probabilidad de que ocurra el primer caso sería <span class="math notranslate nohighlight">\(\Big(\frac{1}{6}\Big)\times\Big(\frac{1}{6}\Big)\times\Big(\frac{5}{6}\Big)\)</span>, la probabilidad de que ocurra el segundo caso es <span class="math notranslate nohighlight">\(\Big(\frac{1}{6}\Big)\times\Big(\frac{5}{6}\Big)\times\Big(\frac{1}{6}\Big)\)</span>, y la probabilidad de que ocurra el tercer caso es <span class="math notranslate nohighlight">\(\Big(\frac{5}{6}\Big)\times\Big(\frac{1}{6}\Big)\times\Big(\frac{1}{6}\Big)\)</span>. Por lo tanto, la probabilidad de obtener dos «cuatro» luego de tres lanzamientos es</p>
+<div class="math notranslate nohighlight" id="equation-ec-bino-ejemp">
+<span class="eqno">(2.12)<a class="headerlink" href="#equation-ec-bino-ejemp" title="Enlace permanente a esta ecuación">#</a></span>\[ 3\times\Big(\frac{1}{6}\Big)^2\times\Big(\frac{5}{6}\Big) \approx 0.0694 , \]</div>
+<p>o <span class="math notranslate nohighlight">\(6.94 \, \%\)</span> si se escribe como porcentaje. Este tipo de información es la que provee la distribución binomial.</p>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>En la ecuación <a class="reference internal" href="#equation-ec-bino-ejemp">(2.12)</a> se utilizó el símbolo de aproximado en vez del símbolo de igualdad. Esto es porque el resultado exacto tiene infinitos decimales, pero aquí se reporta solo hasta el cuarto decimal, redondeando. No obstante, como la cantidad tiene infinitos decimales exactos se pueden tomar tantos decimales como se desee. Otro asunto importante con este tipo de cantidades es que al multiplicarlo o sumarlo con una cantidad que tiene un número finito de cifras significativas, siempre se toma una cifra significativa extra para poderla considerar como una cantidad exacta. Por ejemplo, la cantidad de arriba con cinco cifras significativas sería <span class="math notranslate nohighlight">\(0.069444\)</span>. Si se multiplica por <span class="math notranslate nohighlight">\(1.2\)</span> entonces el valor <span class="math notranslate nohighlight">\(0.0694\)</span>, que tiene tres cifras significativas, se puede considerar una cantidad exacta porque el resultado de la multiplicación solo tendrá dos cifras significativas: <span class="math notranslate nohighlight">\(0.083\)</span>. Por otro lado, si se multiplica por <span class="math notranslate nohighlight">\(1.23\)</span> se tomaría el valor <span class="math notranslate nohighlight">\(0.06944\)</span> y el resultado sería <span class="math notranslate nohighlight">\(0.0854\)</span>. Agregar más cifras significativas no altera el resultado. Otro ejemplo es si se suma, aquí el resultado debe tener el mismo número de decimales del valor con menor número de decimales: <span class="math notranslate nohighlight">\(1.2 + 0.07 = 1.3\)</span> y <span class="math notranslate nohighlight">\(1.23 + 0.069 = 1.30\)</span>.</p>
+</div>
+</div>
+<div class="section" id="definicion-de-la-distribucion-de-probabilidad-binomial">
+<span id="subsec-defbinomial"></span><h2><span class="section-number">2.2.2. </span>Definición de la distribución de probabilidad binomial<a class="headerlink" href="#definicion-de-la-distribucion-de-probabilidad-binomial" title="Enlazar permanentemente con este título">#</a></h2>
+<p>La distribución de probabilidad binomial o función de probabilidad de masa (fpm) es la probabilidad de obtener <span class="math notranslate nohighlight">\(k\)</span> aciertos, o éxitos, luego de <span class="math notranslate nohighlight">\(n\)</span> eventos siempre que la probabilidad de obtener un acierto sea <span class="math notranslate nohighlight">\(p\)</span>. Dicha probabilidad se escribe como</p>
+<div class="math notranslate nohighlight" id="equation-ec-dist-prob-binomial">
+<span class="eqno">(2.13)<a class="headerlink" href="#equation-ec-dist-prob-binomial" title="Enlace permanente a esta ecuación">#</a></span>\[ b(k;n,p) = \frac{n!}{k!(n-k)!}\times p^k \times q^{n-k}, \]</div>
+<p>donde <span class="math notranslate nohighlight">\(q=1-p\)</span>. En esta ecuación, <a class="reference internal" href="#equation-ec-dist-prob-binomial">(2.13)</a>, el primer término indica el número de combinaciones posibles, el segundo término indica la probabilidad de obtener <span class="math notranslate nohighlight">\(k\)</span> aciertos, y el último término indica la probabilidad de no obtener un acierto en los <span class="math notranslate nohighlight">\(n-k\)</span> eventos restantes.</p>
+<p>Una vez conocida la probabilidad de un acierto se puede conocer la probabilidad de obtener <span class="math notranslate nohighlight">\(k\)</span> aciertos para un número <span class="math notranslate nohighlight">\(n\)</span> de eventos. Por ejemplo, la probabilidad de obtener tres «cuatro» luego de lanzar el dado nueve veces es:</p>
+<div class="math notranslate nohighlight">
+\[ b(3;9,1/6) = \frac{9!}{3!(9-3!)}\times (1/6)^3 \times (5/6)^{9-3} = 0.1302 \]</div>
+<p>Entonces se puede decir que la probabilidad de obtener tres «cuatro» luego de lanzar un dado nueve veces es de <span class="math notranslate nohighlight">\(13.02 \ \%\)</span>.</p>
+<p>Usando la ecuación <a class="reference internal" href="#equation-ec-dist-prob-binomial">(2.13)</a> es posible graficar la fpm de la distribución binomial como se muestra en la <a class="reference internal" href="#fig-binom-fpm"><span class="std std-numref">Figura 2.6</span></a> para los casos con <span class="math notranslate nohighlight">\(n=3\)</span> y <span class="math notranslate nohighlight">\(n=9\)</span>; ambos casos con una probabilidad de acierto de <span class="math notranslate nohighlight">\(p=1/6\)</span>. De las figuras queda claro que la función es discreta y que para un valor específico de aciertos la probabilidad es máxima. Note también que la distribución no es simetrica con respecto al valor de mayor probabilidad.</p>
+<div class="margin-caption figure align-default" id="fig-binom-fpm">
+<img alt="../../_images/binom-fpm.svg" src="../../_images/binom-fpm.svg" /><p class="caption"><span class="caption-number">Figura 2.6 </span><span class="caption-text">Funciones de probabilidad de masa de la distribución binomial. La fpm de la izquierda es para el caso de tres eventos, <span class="math notranslate nohighlight">\(n=3\)</span>, mientras que la figura de la derecha es para una fpm con <span class="math notranslate nohighlight">\(n=9\)</span>. Para ambos casos la probabilidad de acierto fue <span class="math notranslate nohighlight">\(p=1/6\)</span>.</span><a class="headerlink" href="#fig-binom-fpm" title="Enlace permanente a esta imagen">#</a></p>
+</div>
+<div class="cell tag_hide-cell docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell content</span>
+<span class="expanded">Hide code cell content</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Con este código se generaron las figuras de las funciones de probabilidad de masa de la distribución binomial</span>
+
+<span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">binom</span>
+<span class="kn">import</span> <span class="nn">pylab</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">matplotlib</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="n">matplotlib</span><span class="o">.</span><span class="n">rcParams</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s1">&#39;font.size&#39;</span><span class="p">:</span> <span class="mi">16</span><span class="p">})</span>
+<span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">ax1</span><span class="p">,</span><span class="n">ax2</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+
+<span class="c1">####</span>
+<span class="n">n</span> <span class="p">,</span> <span class="n">p</span> <span class="o">=</span> <span class="mi">3</span> <span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="mi">6</span>
+<span class="c1">####</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">binom</span><span class="o">.</span><span class="n">pmf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">p</span><span class="p">),</span> <span class="s1">&#39;bo&#39;</span><span class="p">,</span> <span class="n">ms</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;n = </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">n</span><span class="p">))</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">vlines</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">binom</span><span class="o">.</span><span class="n">pmf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">p</span><span class="p">),</span> <span class="n">colors</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;fpm&#39;</span><span class="p">)</span>
+
+<span class="c1">####</span>
+<span class="n">n</span> <span class="p">,</span> <span class="n">p</span> <span class="o">=</span> <span class="mi">9</span> <span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="mi">6</span>
+<span class="c1">####</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">binom</span><span class="o">.</span><span class="n">ppf</span><span class="p">(</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">p</span><span class="p">),</span>
+              <span class="n">binom</span><span class="o">.</span><span class="n">ppf</span><span class="p">(</span><span class="mf">0.999</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">p</span><span class="p">))</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">binom</span><span class="o">.</span><span class="n">pmf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">p</span><span class="p">),</span> <span class="s1">&#39;bo&#39;</span><span class="p">,</span> <span class="n">ms</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;n = </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">n</span><span class="p">))</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">vlines</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">binom</span><span class="o">.</span><span class="n">pmf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">p</span><span class="p">),</span> <span class="n">colors</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;fpm&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/a3d05745a05c49706cc5db169be9f9a0219e679c0c8683067554466c326a7a0f.png" src="../../_images/a3d05745a05c49706cc5db169be9f9a0219e679c0c8683067554466c326a7a0f.png" />
+</div>
+</details>
+</div>
+</div>
+<div class="section" id="media-y-desviacion-estandar-de-la-distribucion-binomial">
+<span id="subsec-binom-parametros"></span><h2><span class="section-number">2.2.3. </span>Media y desviación estándar de la distribución binomial<a class="headerlink" href="#media-y-desviacion-estandar-de-la-distribucion-binomial" title="Enlazar permanentemente con este título">#</a></h2>
+<p>Usando las ecuaciones de la <a class="reference internal" href="esta-def.html#subsec-media"><span class="std std-numref">Sección 2.1.5</span></a> y la <a class="reference internal" href="esta-def.html#subsec-desvi"><span class="std std-numref">Sección 2.1.6</span></a>, y la ecuación <a class="reference internal" href="#equation-ec-dist-prob-binomial">(2.13)</a>, es posible determinar la media y la desviación estándar de la distribución binomial. La media o promedio es</p>
+<div class="math notranslate nohighlight" id="equation-ec-binom-media">
+<span class="eqno">(2.14)<a class="headerlink" href="#equation-ec-binom-media" title="Enlace permanente a esta ecuación">#</a></span>\[ \mu = np, \]</div>
+<p>y la desviación estándar es</p>
+<div class="math notranslate nohighlight" id="equation-ec-binom-desvi">
+<span class="eqno">(2.15)<a class="headerlink" href="#equation-ec-binom-desvi" title="Enlace permanente a esta ecuación">#</a></span>\[ \sigma = \sqrt{npq}. \]</div>
+<div class="admonition warning">
+<p class="admonition-title">Advertencia</p>
+<p>Note que se han usado los símbolos <span class="math notranslate nohighlight">\(\mu\)</span> y <span class="math notranslate nohighlight">\(\sigma\)</span> para la media y la desviación estándar de la distribución binomial. En cambio en la <a class="reference internal" href="esta-def.html#subsec-media"><span class="std std-numref">Sección 2.1.5</span></a> y <a class="reference internal" href="esta-def.html#subsec-desvi"><span class="std std-numref">Sección 2.1.6</span></a> se usaron los símbolos <span class="math notranslate nohighlight">\(\bar x\)</span> y <span class="math notranslate nohighlight">\(s\)</span>, respectivamente. Se usarán los símbolos <span class="math notranslate nohighlight">\(\mu\)</span> y <span class="math notranslate nohighlight">\(\sigma\)</span> cuando el número de datos con el que se construyó la distribución es infinito. Para los casos en que el número de datos sea finito, y sean discretos, por lo general se usarán los símbolos <span class="math notranslate nohighlight">\(\bar k\)</span> y <span class="math notranslate nohighlight">\(s\)</span>.</p>
+</div>
+<p>Para el ejemplo, en promedio se espera obtener <span class="math notranslate nohighlight">\(\mu = 0.5\)</span> aciertos del número «cuatro» en tres lanzamientos del dado. Note que el promedio no tiene que ser un valor entero, y en este caso significa que lo más probable es no obtener ningún acierto lanzando solo tres veces el dado. Por otro lado, la desviación estándar es <span class="math notranslate nohighlight">\(\sigma = 0.6\)</span>, por lo que aún cuando lo más probable es no obtener ningún acierto es de esperarse que en ocaciones se obtenga un «cuatro» luego de tres lanzamientos (<span class="math notranslate nohighlight">\(k = 0.5 + 0.6 &gt; 1\)</span>).</p>
+<div class="admonition seealso">
+<p class="admonition-title">Ver también</p>
+<p>Más sobre distribución binomial en el capítulo 10 de <span id="id2">[<a class="reference internal" href="../volumen-ref.html#id7" title="John Taylor. An Introduction to Error Analysis: The Study of Uncertainties in Physical Measurements. University Science Books, Sausalito, California, 1996.">Taylor, 1996</a>]</span>, la sección 2.1 de <span id="id3">[<a class="reference internal" href="../volumen-ref.html#id4" title="Philip Bevington and D Keith. Data Reduction and Error Analysis for the Physical Sciences. McGraw-Hill, 3 edition, 2001.">Bevington and Keith, 2001</a>]</span> y la sección 7.2 de <span id="id4">[<a class="reference internal" href="../volumen-ref.html#id8" title="Javier Gorgas García, Nicolás Cardiel López, and Jaime Zamorano Calvo. Estadística Básica: para estudiantes de ciencias. Universidad Complutense de Madrid, Madrid, 2011. ISBN 9788469189818.">Gorgas García <em>et al.</em>, 2011</a>]</span>.</p>
+</div>
+<hr class="footnotes docutils" />
+<dl class="footnote brackets">
+<dt class="label" id="ergodicidad"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
+<dd><p>Esto se conoce como ergodicidad. Para el ejemplo ocurre cuando estadísticamente es lo mismo lanzar <span class="math notranslate nohighlight">\(n\)</span> dados idénticos al mismo tiempo o lanzar un mismo dado <span class="math notranslate nohighlight">\(n\)</span> veces en tiempos diferentes.</p>
+</dd>
+</dl>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "executablebooks/jupyter-book",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./docs\part4"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="esta-def.html"
+       title="página anterior">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">anterior</p>
+        <p class="prev-next-title"><span class="section-number">2.1. </span>Definiciones básicas</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="ejercicios-part4.html"
+       title="siguiente página">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">siguiente</p>
+        <p class="prev-next-title"><span class="section-number">2.3. </span>Ejercicios</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contenido
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lanzamiento-de-un-dado">2.2.1. Lanzamiento de un dado</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#definicion-de-la-distribucion-de-probabilidad-binomial">2.2.2. Definición de la distribución de probabilidad binomial</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#media-y-desviacion-estandar-de-la-distribucion-binomial">2.2.3. Media y desviación estándar de la distribución binomial</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+Por Edgar Rueda, profesor asociado, Universidad de Antioquia
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2023. versión 0.2.1.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" /></a><br /><span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">Notas de Físca Experimental</span> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International License</a>.
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

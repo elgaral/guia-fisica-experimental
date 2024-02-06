@@ -1,0 +1,708 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="es" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>8.4. GUM: Guía para el reporte de la incertidumbre experimental &#8212; Notas de Física Experimental</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/myfile.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/.ipynb_checkpoints/myfile-checkpoint.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/translations.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/part8/GUM-basico';</script>
+    <link rel="index" title="Índice" href="../../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../../search.html" />
+    <link rel="next" title="8.5. Distribución y corrección de t de student" href="t-student.html" />
+    <link rel="prev" title="8.3. Combinación de resultados" href="combinacion-resultados.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="es"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Saltar al contenido principal</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/Logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../../_static/Logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    Notas de Física experimental
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Volumen 1</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../part1/intro-gen1.html">1. Generalidades</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../part1/notacion.html">1.1. Notación correcta</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../part1/orden-magnitud.html">1.2. Órdenes de magnitud, potencias de 10 y escala de decibeles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../part1/cifras-significativas.html">1.3. Cifras significativas y redondeo de cifras</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../part1/tablas.html">1.4. Recopilación de datos experimentales: tablas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../part1/ejercicios-part1.html">1.5. Ejercicios</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../part4/intro-estadistica.html">2. Conceptos básicos de estadística</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../part4/esta-def.html">2.1. Definiciones básicas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../part4/dist-binomial.html">2.2. Distribución binomial</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../part4/ejercicios-part4.html">2.3. Ejercicios</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../part2/intro-incertidumbre.html">3. Incertidumbre</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../part2/definicion-incertidumbre.html">3.1. Definición de la Incertidumbre</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../part2/errores.html">3.2. Incertidumbres aleatorias y errores sistemáticos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../part2/precision-exactitud.html">3.3. Precision y Exactitud</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../part2/reporte-incertidumbre.html">3.4. Reporte de la Incertidumbre</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../part2/estimacion-incertidumbre.html">3.5. Estimación incertidumbre</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../part2/incertidumbre-unamedida.html">3.6. Incertidumbre de una única medida</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../part2/error-relativo.html">3.7. Incertidumbre relativa</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../part2/error-indirecto.html">3.8. Determinación de la incertidumbre de una variable indirecta</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../part2/ejercicios-part2.html">3.9. Ejercicios</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../part3/intro-graficas.html">4. Graficación de datos</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../part3/graficas.html">4.1. Graficación de datos experimentales</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../part3/linearizacion.html">4.2. Linearización de los datos experimentales</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../part3/ajusteLineal.html">4.3. Ajuste lineal de datos experimentales</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../part3/ejercicios-part3.html">4.4. Ejercicios</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Volumen 2</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../part5/intro-estadistica2.html">5. Conceptos de estadística para el análisis de la incertidumbre aleatoria</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../part5/def-estadistica.html">5.1. Función densidad de probabilidad</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../part5/distNormal.html">5.2. Distribución normal o <em>Gaussiana</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../part5/distPoisson.html">5.3. Distribución de Poisson</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../part5/ejercicios-part5.html">5.4. Ejercicios</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../part6/intro-errorEstandar.html">6. Incertidumbre de procesos aleatorios</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../part6/teoremaLC.html">6.1. Teorema del límite central</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../part6/errorEstandar.html">6.2. Incertidumbre estándar</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../part6/justificacion-media.html">6.3. Demostraciones del valor más probable y de la incertidumbre estándar</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../part6/IntervaloConfianza.html">6.4. Intervalos de confianza</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../part6/propagacionError.html">6.5. Propagación de la incertidumbre</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../part6/comparaResul.html">6.6. Comparación de resultados</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../part6/ejercicios-part6.html">6.7. Ejercicios</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../part7/intro-ajuste.html">7. Método de ajuste de datos</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../part7/minimosCuad.html">7.1. Método de mínimos cuadrados</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../part7/AjusteNolineal.html">7.2. Método de ajuste no lineal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../part7/InterExtrapolacion.html">7.3. Interpolación y extrapolación de datos experimentales</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../part7/ejercicios-part7.html">7.4. Ejercicios</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Volumen 3</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="intro-complemento-error.html">8. Tópicos complementarios sobre análisis de la incertidumbre</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="error-Varios.html">8.1. Criterio de Chauvenet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="error-dominante.html">8.2. Incertidumbre dominante</a></li>
+<li class="toctree-l2"><a class="reference internal" href="combinacion-resultados.html">8.3. Combinación de resultados</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">8.4. GUM: Guía para el reporte de la incertidumbre experimental</a></li>
+<li class="toctree-l2"><a class="reference internal" href="t-student.html">8.5. Distribución y corrección de t de student</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ejercicios-part8.html">8.6. Ejercicios</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../part9/intro-complemento-ajuste.html">9. Conceptos avanzados sobre ajuste de datos</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../part9/residuos.html">9.1. Residuos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../part9/chiCuadrado.html">9.2. Chi-cuadrado <span class="math notranslate nohighlight">\(\chi^2\)</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../part9/ejercicios-part9.html">9.3. Ejercicios</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Complementos</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../experimentos.html">10. Guía de experimentos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ipynbs/simulaciones.html">11. Compendio de simulaciones</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../ipynbs/auxProgramas.html">Programas usados en el libro</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Versiones.html">Versiones: actualizaciones y correcciones</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../volumen-ref.html">Referencias</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li>
+<button onclick="initThebeSBT()"
+  class="btn btn-sm btn-launch-thebe dropdown-item"
+  title="Launch Thebe"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="btn__text-container">Live Code</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Descarga esta pagina">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/docs/part8/GUM-basico.ipynb" target="_blank"
+   class="btn btn-sm btn-download-notebook-button dropdown-item"
+   title="Descargar archivo de cuaderno"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-code"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="../../_sources/docs/part8/GUM-basico.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Descargar archivo fuente"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Imprimir en PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Modo de pantalla completa"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="claro/oscuro" aria-label="claro/oscuro" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Búsqueda" aria-label="Búsqueda" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>GUM: Guía para el reporte de la incertidumbre experimental</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contenido </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#clasificacion-de-las-formas-de-evaluar-la-incertidumbre">8.4.1. Clasificación de las formas de evaluar la incertidumbre</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluacion-de-las-incertidumbres-tipo-a-y-tipo-b">8.4.2. Evaluación de las incertidumbres tipo A y tipo B</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#incertidumbre-tipo-b-distribucion-uniforme">8.4.2.1. Incertidumbre tipo B: distribución uniforme</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#incertidumbre-tipo-b-distribucion-triangular">8.4.2.2. Incertidumbre tipo B: distribución triangular</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#combinacion-de-incertidumbres-tipo-a-y-tipo-b">8.4.2.3. Combinación de incertidumbres tipo A y tipo B</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <div class="tex2jax_ignore mathjax_ignore section" id="gum-guia-para-el-reporte-de-la-incertidumbre-experimental">
+<span id="sec-gum-basico"></span><h1><span class="section-number">8.4. </span>GUM: Guía para el reporte de la incertidumbre experimental<a class="headerlink" href="#gum-guia-para-el-reporte-de-la-incertidumbre-experimental" title="Enlazar permanentemente con este título">#</a></h1>
+<p>La sigla <em>GUM</em> significa «Guide to the expression of uncertainty in measurements», y corresponde a un esfuerzo internacional por unificar la forma en que se reporta la incertidumbre en la medición de un <em>mensurando</em><a class="footnote-reference brackets" href="#mensurando" id="id1">1</a>. La iniciativa surge en el año 1977 cuando la mayor autoridad mundial en metrología, Comité International des Poids et Mesures (CIPM), le pide al Bureau International des Poids et Mesures (<a class="reference external" href="https://www.bipm.org/en/home">BIPM</a>) que se encargue, junto con los laboratorios nacionales de estándares, de presentar una recomendación. A partir de las recomendaciones hechas, el CIPM le asignó al Internatinal Organization for Stardardization (ISO), la publicación de una guía con los objetivos de promover el acceso a la información completa de como llegar al valor de la incertidumbre, y proveer las bases que permitan la comparación internacional de medidas. La primera publicación se realizó en 1995 siendo la versión actual de 2008 <span id="id2">[<a class="reference internal" href="../volumen-ref.html#id12" title="BIPM, IEC, IFCC, ILAC, ISO, IUPAC, IUPAP, and OIML. Evaluation of measurement data — Guide to the expression of uncertainty in measurement. Joint Committee for Guides in Metrology, JCGM 100:2008. URL: https://www.bipm.org/documents/20126/2071204/JCGM\_100\_2008\_E.pdf/cb0ef43f-baa5-11cf-3f85-4dcd86f77bd6.">BIPM <em>et al.</em>, n.d.</a>]</span>. En 2010 se realizaron algunas correcciones.</p>
+<p>La guía es extensa, y ha sido cubierta, hasta cierto punto, en las anteriores secciones de este texto, por lo que aquí se presentarán sólo los conceptos más básicos y que se consideran más relevantes, basados en el libro de Les Kirkup <span id="id3">[<a class="reference internal" href="../volumen-ref.html#id13" title="Les Kirkup. Data analysis for physical scientists: Featuring Excel®. Cambridge University Press, 2012.">Kirkup, 2012</a>]</span>.</p>
+<div class="section" id="clasificacion-de-las-formas-de-evaluar-la-incertidumbre">
+<span id="subsec-gum-clasificacion"></span><h2><span class="section-number">8.4.1. </span>Clasificación de las formas de evaluar la incertidumbre<a class="headerlink" href="#clasificacion-de-las-formas-de-evaluar-la-incertidumbre" title="Enlazar permanentemente con este título">#</a></h2>
+<p>Según la <em>GUM</em>, la incertidumbre de una medida es un parámetro, asociado con el resultado de una medición, que caracteriza la dispersión de los valores que pueden ser de forma razonable asociados al mensurando.</p>
+<p>A partir de la definición para la incertidumbre, la <em>GUM</em> propone clasificar los tipos de incertidumbres en dos categorías:</p>
+<ul class="simple">
+<li><p>La incertidumbre <strong>tipo A</strong>, correspondiente a toda incertidumbre que se haya determinado a partir de aplicar métodos estadísticos a una serie de medidas del mensurando.</p></li>
+<li><p>La incertidumbre <strong>tipo B</strong>, es toda incertidumbre que no cumpla con la condición del <em>tipo A</em>.</p></li>
+</ul>
+<p>La condición impuesta para la incertidumbre <em>tipo A</em> es estricta, por lo que, si para un investigador «X» que realiza una serie de medidas para determinar el valor esperado y la incertidumbre de la reflectancia de una muestra, dicha incertidumbre corresponde al tipo A, para otro investigador «Y» en otro laboratorio que no cuente con el tiempo para hacer las medidas de la reflectancia, y decida tomar el valor obtenido por el investigador «X», la incertidumbre de la reflectancia para el investigador «Y» será del tipo B sin importar que la incertidumbre de la reflectancia haya sido originalmente tipo A.</p>
+<p>Otros ejemplos de incertidumbres tipo B son las correspondientes a resolución del instrumento de medida, valores tomados de artículos científicos, catálogos, «handbooks» o libros.</p>
+</div>
+<div class="section" id="evaluacion-de-las-incertidumbres-tipo-a-y-tipo-b">
+<span id="subsec-gum-evaluacion"></span><h2><span class="section-number">8.4.2. </span>Evaluación de las incertidumbres tipo A y tipo B<a class="headerlink" href="#evaluacion-de-las-incertidumbres-tipo-a-y-tipo-b" title="Enlazar permanentemente con este título">#</a></h2>
+<p>Para evaluar una incertidumbre <em>tipo A</em> se aplica el procedimiento visto en la <a class="reference internal" href="../part6/errorEstandar.html#sec-errorestandar"><span class="std std-numref">Sección 6.2</span></a>. Para la evaluación de las incertidumbres <em>tipo B</em> se debe analizar el problema, particular, para poder definir que tipo de <em>densidad de probabilidad</em> sigue la cantidad física, o mensurando, con el fin de poder estimar su valor más probable e incertidumbre. A continuación se presentan dos ejemplos.</p>
+<div class="section" id="incertidumbre-tipo-b-distribucion-uniforme">
+<span id="subsubsec-gum-pdfuniforme"></span><h3><span class="section-number">8.4.2.1. </span>Incertidumbre tipo B: distribución uniforme<a class="headerlink" href="#incertidumbre-tipo-b-distribucion-uniforme" title="Enlazar permanentemente con este título">#</a></h3>
+<p>Cuando la probabilidad de que la medida del mensurando este dentro de un intervalo es la misma para cualquier punto comprendido dentro del intervalo, la distribución de las medidas será uniforme o rectangular. Un ejemplo de este caso de distribución se encuentra cuando queremos ubicar el punto exacto en el que llega una partícula, pero nuestro detector está dividido en segmentos de lado <span class="math notranslate nohighlight">\(l\)</span> talque cuando una partícula llega a un segmento, sólo podemos decir que la partícula llega a una zona comprendida entre <span class="math notranslate nohighlight">\(a\)</span> y <span class="math notranslate nohighlight">\(b\)</span>, donde <span class="math notranslate nohighlight">\(l = b-a\)</span>. La densidad de probabilidad en este caso está dada por la expresión</p>
+<div class="math notranslate nohighlight" id="equation-ec-gum1">
+<span class="eqno">(8.6)<a class="headerlink" href="#equation-ec-gum1" title="Enlace permanente a esta ecuación">#</a></span>\[ p_u(x) = \frac{1}{b-a} .\]</div>
+<p>Una vez conocida la densidad de probabilidad se puede calcular el valor esperado <span class="math notranslate nohighlight">\(\mu\)</span> y la incertidumbre <span class="math notranslate nohighlight">\(\sigma\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\mu = \int_{a}^{b} xp_u(x) dx = \int_{a}^{b} \frac{x}{b-a} dx = \frac{(b-a)^2}{2(b-a)} = \frac{a+b}{2} ,\]</div>
+<p>y</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{split} \sigma^2 &amp;= \int_{a}^{b} (x-\mu)^2p_u(x) dx = \int_{a}^{b} (x-\mu)^2\frac{1}{b-a} dx \\
+&amp;= \int_{a}^{b} x^2\frac{1}{b-a} dx - \int_{a}^{b} 2x\mu\frac{1}{b-a} dx + \int_{a}^{b} \mu^2\frac{1}{b-a} dx \\
+&amp;= \frac{(b^3 - a^3)}{3(b-a)} - \frac{2\mu^2}{b-a} + \frac{\mu^2}{b-a} = \frac{a^2 +ab + b^2}{3} - \frac{a^2+2ab+b^2}{4} = \frac{(b-a)^2}{12}
+\end{split} .\end{split}\]</div>
+<p>Finalmente, el valor a reportar del mensurando es</p>
+<div class="math notranslate nohighlight" id="equation-ec-gum2">
+<span class="eqno">(8.7)<a class="headerlink" href="#equation-ec-gum2" title="Enlace permanente a esta ecuación">#</a></span>\[ x = \frac{a+b}{2} \pm \frac{b-a}{\sqrt{12}} .\]</div>
+<p>La probabilidad de que <span class="math notranslate nohighlight">\(x\)</span> se encuentre dentro del intervalo definido por <a class="reference internal" href="#equation-ec-gum2">(8.7)</a> es</p>
+<div class="math notranslate nohighlight">
+\[ p_u(\mu-\sigma \leq \mu + \sigma) = \int_{\mu - \sigma}^{\mu+\sigma} p_u(x) dx = \int_{\mu - \sigma}^{\mu+\sigma} \frac{1}{b-a} dx = \frac{2\sigma}{b-a} = \frac{1}{\sqrt{3}} \approx 0.577\]</div>
+<p><strong>Ejemplo</strong>:</p>
+<p>Según lo visto en la <a class="reference internal" href="../part2/incertidumbre-unamedida.html#sec-unamedida"><span class="std std-numref">Sección 3.6</span></a>, para un cronómetro con una resolución de <span class="math notranslate nohighlight">\(1\,\text{cs}\)</span>, la incertidumbre a reportar en segundos sería <span class="math notranslate nohighlight">\(\pm 0.01\,\text{s}\)</span>. Por lo tanto, al medir un tiempo de <span class="math notranslate nohighlight">\(44\,\text{cs}\)</span> el valor a reportar sería:</p>
+<div class="math notranslate nohighlight">
+\[ t = (0.44 \pm 0.01) \,\text{s} .\]</div>
+<p>Para un nuevo razonamiento, donde a partir de la resolución el tiempo con igual probabilidad se encuentra entre <span class="math notranslate nohighlight">\(43\,\text{cs}\)</span> y <span class="math notranslate nohighlight">\(45\,\text{cs}\)</span>, al considerar una distribución uniforme la incertidumbre será:</p>
+<div class="math notranslate nohighlight">
+\[ \alpha_t= \frac{(0.45 - 0.43)\,\text{s}}{\sqrt{12}} = 0.00577 \,\text{s} ,\]</div>
+<p>y el valor a reportar con una confiabilidad del <span class="math notranslate nohighlight">\(58\,\%\)</span> es</p>
+<div class="math notranslate nohighlight">
+\[ t = (0.440 \pm 0.006) \,\text{s} .\]</div>
+</div>
+<div class="section" id="incertidumbre-tipo-b-distribucion-triangular">
+<span id="subsubsec-gum-pdftriangular"></span><h3><span class="section-number">8.4.2.2. </span>Incertidumbre tipo B: distribución triangular<a class="headerlink" href="#incertidumbre-tipo-b-distribucion-triangular" title="Enlazar permanentemente con este título">#</a></h3>
+<p>Suponiendo que el valor de un mensurando se encuentra dentro del intervalo <span class="math notranslate nohighlight">\(l= b-a\)</span>, cuando se tiene mayor certeza de que el valor del mensurando se encuentre con mayor probabilidad cerca del centro del intervalo que en sus extremos, la distribución triángular puede ser una buena opción para modelar dicha distribución (ver <a class="reference internal" href="#fig-pdftriangular"><span class="std std-numref">Figura 8.4</span></a>). Un ejemplo de este caso de distribución es cuando se usa la resolución del instrumento de medida para definir la incertidumbre de la medida (<a class="reference internal" href="../part2/incertidumbre-unamedida.html#sec-unamedida"><span class="std std-numref">Sección 3.6</span></a>). La función densidad de probabilidad para la distribución triángular esta definida como</p>
+<div class="math notranslate nohighlight" id="equation-ec-gum3">
+<span class="eqno">(8.8)<a class="headerlink" href="#equation-ec-gum3" title="Enlace permanente a esta ecuación">#</a></span>\[\begin{split}
+  p_{\Delta}(x) =
+    \begin{cases}
+      \frac{4}{(b-a)^2}(x-a) &amp; a \leq x \leq \frac{a+b}{2} \\
+      \frac{4}{(b-a)^2}(b-x) &amp; \frac{a+b}{2} &lt; x \leq b \\
+      0 &amp; \text{en cualquier otro caso}
+    \end{cases}       
+\end{split}\]</div>
+<div class="figure align-default" id="fig-pdftriangular">
+<img alt="../../_images/pdfTriangular.svg" src="../../_images/pdfTriangular.svg" /><p class="caption"><span class="caption-number">Figura 8.4 </span><span class="caption-text">Función densidad de probabilidad de la distribución triangular.</span><a class="headerlink" href="#fig-pdftriangular" title="Enlace permanente a esta imagen">#</a></p>
+</div>
+<p>Aplicando las ecuaciones <a class="reference internal" href="../part5/def-estadistica.html#equation-ec-media">(5.4)</a> y <a class="reference internal" href="../part5/def-estadistica.html#equation-ec-desviacionest">(5.6)</a>, se obtiene para la media</p>
+<div class="math notranslate nohighlight">
+\[\mu = \frac{a+b}{2} ,\]</div>
+<p>y para la desviación estándar</p>
+<div class="math notranslate nohighlight">
+\[ \sigma = \frac{b-a}{2\sqrt{6}} .\]</div>
+<p>Por lo tanto, el valor a reportar del mensurando será</p>
+<div class="math notranslate nohighlight" id="equation-ec-gum4">
+<span class="eqno">(8.9)<a class="headerlink" href="#equation-ec-gum4" title="Enlace permanente a esta ecuación">#</a></span>\[ x = \frac{a+b}{2} \pm \frac{b-a}{2\sqrt{6}} ,\]</div>
+<p>y la probabilidad de que <span class="math notranslate nohighlight">\(x\)</span> se encuentre dentro del intervalo definido por <a class="reference internal" href="#equation-ec-gum4">(8.9)</a> es <span class="math notranslate nohighlight">\(p_{\Delta}(\mu-\sigma \leq x \leq \mu + \sigma) \approx 0.6498. \)</span></p>
+<p><strong>Ejemplo</strong></p>
+<p>Si en el razonamiento hecho para la incertidumbre del tiempo, se considera que sigue una distribución triángular, la incertidumbre será:</p>
+<div class="math notranslate nohighlight">
+\[ \alpha_t= \frac{(0.45 - 0.43)\,\text{s}}{2\sqrt{6}} = 0.00408 \,\text{s} ,\]</div>
+<p>y el valor a reportar en este caso con una confiabilidad del <span class="math notranslate nohighlight">\(65\,\%\)</span> es</p>
+<div class="math notranslate nohighlight">
+\[ t = (0.440 \pm 0.004) \,\text{s} .\]</div>
+</div>
+<div class="section" id="combinacion-de-incertidumbres-tipo-a-y-tipo-b">
+<span id="subsubsec-gum-combinacionerror"></span><h3><span class="section-number">8.4.2.3. </span>Combinación de incertidumbres tipo A y tipo B<a class="headerlink" href="#combinacion-de-incertidumbres-tipo-a-y-tipo-b" title="Enlazar permanentemente con este título">#</a></h3>
+<p>El <em>GUM</em> hace uso de la propagación de la incetidumbre (<a class="reference internal" href="../part6/propagacionError.html#subsec-errorpequeno"><span class="std std-numref">Sección 6.5.1</span></a>) para combinar las incertidumbres tipo A y tipo B. Un caso especial se presenta cuando se determina el valor más probable de un mensurando cuya incertidumbre es tipo A, es decir, se realizaron varias medidas y se aplican métodos estadísticos para determiner el valor más probable y la incertidumbre. Si, posteriormente se quiere incluir una incertidumbre tipo B (por ejemplo la incertidumbre relativa a la resolución del instrumento de medida) las dos incertidumbres se deben sumar en cuadratura, y la raiz cuadrada de dicha suma será la incertidumbre combinada. Lo interesante de este caso es que la incertidumbre tipo B limitará la precisión que se puede alcanzar en la incertidumbre tipo A, es decir, <em>la precisión que se puede obtener realizando muchas medidas del mensurando no prodrá ser mejor que la precisión debida a la resolución del instrumento de medida</em>.</p>
+<p><strong>Ejemplo</strong>:</p>
+<p>Recordando el ejemplo de la <a class="reference internal" href="../part6/errorEstandar.html#subsec-estimacionejemplo1b"><span class="std std-numref">Sección 6.2.1</span></a>, sobre la medición del tiempo de caída de un objeto, luego de realizar siete mediciones del tiempo se obtuvo el valor</p>
+<div class="math notranslate nohighlight">
+\[ t = (0.486 \pm 0.013)\,\text{s} ,\]</div>
+<p>con una confiabilidad del <span class="math notranslate nohighlight">\(68\,\%\)</span>. Con el objetivo de dar un valor de incertidumbre más cercano al real, al tener en cuenta la resolución del equipo que se considera sigue una distribución triangular, la incertidumbre combinada será</p>
+<div class="math notranslate nohighlight">
+\[ \alpha_c = \sqrt{(0.013\,\text{s})^2 + (0.004\,\text{s})^2} = 0.0136\,\text{s} ,\]</div>
+<p>y el valor correcto de tiempo a reportar es</p>
+<div class="math notranslate nohighlight">
+\[ t = (0.486 \pm 0.014)\,\text{s} .\]</div>
+<p>Note que la incertidumbre debida a la resolución del cronómetro es todavía inferior a la incertidumbre debida a las fluctuaciones en la medida del tiempo. Lo cuál nos lleva a dos conclusiones: para las siete mediciones se puede ignorar la incertidumbre debida a la resolución, y todavía se pueden hacer mas mediciones para obtener una mejor precisión en la medida del tiempo.</p>
+<div class="admonition warning">
+<p class="admonition-title">Advertencia</p>
+<p>Puesto que para encontrar la incertidumbre combinada se ha realizado la suma de los cuadrados de dos incetidumbres que siguen distribuciones diferentes, la confiabilidad que se reporta para el nuevo valor es sólo una aproximación, dado que no estamos completamente seguros sobre que tipo de distribución se genera con la suma. Para el ejemplo, como ambas variables tienen una confiabilidad cercana al <span class="math notranslate nohighlight">\(68\,\%\)</span>, diremos que el tiempo reportada con la incertidumbre combinada, tiene una confiabilidad aproximada del <span class="math notranslate nohighlight">\(68\,\%\)</span>.</p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">Ver también</p>
+<p>Para leer más sobre <em>GUM</em> mirar las secciones 5.7, 5.8 y 5.9 de <span id="id4">[<a class="reference internal" href="../volumen-ref.html#id13" title="Les Kirkup. Data analysis for physical scientists: Featuring Excel®. Cambridge University Press, 2012.">Kirkup, 2012</a>]</span>, o la guía de <em>GUM</em> <span id="id5">[<a class="reference internal" href="../volumen-ref.html#id12" title="BIPM, IEC, IFCC, ILAC, ISO, IUPAC, IUPAP, and OIML. Evaluation of measurement data — Guide to the expression of uncertainty in measurement. Joint Committee for Guides in Metrology, JCGM 100:2008. URL: https://www.bipm.org/documents/20126/2071204/JCGM\_100\_2008\_E.pdf/cb0ef43f-baa5-11cf-3f85-4dcd86f77bd6.">BIPM <em>et al.</em>, n.d.</a>]</span>.</p>
+</div>
+<hr class="footnotes docutils" />
+<dl class="footnote brackets">
+<dt class="label" id="mensurando"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
+<dd><p>El <em>mensurando</em> es la cantidad física que se pretende medir experimentalmente.</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "executablebooks/jupyter-book",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./docs\part8"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="combinacion-resultados.html"
+       title="página anterior">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">anterior</p>
+        <p class="prev-next-title"><span class="section-number">8.3. </span>Combinación de resultados</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="t-student.html"
+       title="siguiente página">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">siguiente</p>
+        <p class="prev-next-title"><span class="section-number">8.5. </span>Distribución y corrección de t de student</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contenido
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#clasificacion-de-las-formas-de-evaluar-la-incertidumbre">8.4.1. Clasificación de las formas de evaluar la incertidumbre</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluacion-de-las-incertidumbres-tipo-a-y-tipo-b">8.4.2. Evaluación de las incertidumbres tipo A y tipo B</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#incertidumbre-tipo-b-distribucion-uniforme">8.4.2.1. Incertidumbre tipo B: distribución uniforme</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#incertidumbre-tipo-b-distribucion-triangular">8.4.2.2. Incertidumbre tipo B: distribución triangular</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#combinacion-de-incertidumbres-tipo-a-y-tipo-b">8.4.2.3. Combinación de incertidumbres tipo A y tipo B</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+Por Edgar Rueda, profesor asociado, Universidad de Antioquia
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2023. versión 0.2.1.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" /></a><br /><span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">Notas de Físca Experimental</span> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International License</a>.
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

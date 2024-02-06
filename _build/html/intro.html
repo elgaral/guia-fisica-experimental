@@ -1,0 +1,673 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="es" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Notas de Física experimental &#8212; Notas de Física Experimental</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/myfile.css" />
+    <link rel="stylesheet" type="text/css" href="_static/.ipynb_checkpoints/myfile-checkpoint.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/translations.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'intro';</script>
+    <link rel="index" title="Índice" href="genindex.html" />
+    <link rel="search" title="Búsqueda" href="search.html" />
+    <link rel="next" title="1. Generalidades" href="docs/part1/intro-gen1.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="es"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Saltar al contenido principal</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="#">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/Logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="_static/Logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1 current active">
+                <a class="reference internal" href="#">
+                    Notas de Física experimental
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Volumen 1</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="docs/part1/intro-gen1.html">1. Generalidades</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="docs/part1/notacion.html">1.1. Notación correcta</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docs/part1/orden-magnitud.html">1.2. Órdenes de magnitud, potencias de 10 y escala de decibeles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docs/part1/cifras-significativas.html">1.3. Cifras significativas y redondeo de cifras</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docs/part1/tablas.html">1.4. Recopilación de datos experimentales: tablas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docs/part1/ejercicios-part1.html">1.5. Ejercicios</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="docs/part4/intro-estadistica.html">2. Conceptos básicos de estadística</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="docs/part4/esta-def.html">2.1. Definiciones básicas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docs/part4/dist-binomial.html">2.2. Distribución binomial</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docs/part4/ejercicios-part4.html">2.3. Ejercicios</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="docs/part2/intro-incertidumbre.html">3. Incertidumbre</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="docs/part2/definicion-incertidumbre.html">3.1. Definición de la Incertidumbre</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docs/part2/errores.html">3.2. Incertidumbres aleatorias y errores sistemáticos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docs/part2/precision-exactitud.html">3.3. Precision y Exactitud</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docs/part2/reporte-incertidumbre.html">3.4. Reporte de la Incertidumbre</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docs/part2/estimacion-incertidumbre.html">3.5. Estimación incertidumbre</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docs/part2/incertidumbre-unamedida.html">3.6. Incertidumbre de una única medida</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docs/part2/error-relativo.html">3.7. Incertidumbre relativa</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docs/part2/error-indirecto.html">3.8. Determinación de la incertidumbre de una variable indirecta</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docs/part2/ejercicios-part2.html">3.9. Ejercicios</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="docs/part3/intro-graficas.html">4. Graficación de datos</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="docs/part3/graficas.html">4.1. Graficación de datos experimentales</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docs/part3/linearizacion.html">4.2. Linearización de los datos experimentales</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docs/part3/ajusteLineal.html">4.3. Ajuste lineal de datos experimentales</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docs/part3/ejercicios-part3.html">4.4. Ejercicios</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Volumen 2</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="docs/part5/intro-estadistica2.html">5. Conceptos de estadística para el análisis de la incertidumbre aleatoria</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="docs/part5/def-estadistica.html">5.1. Función densidad de probabilidad</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docs/part5/distNormal.html">5.2. Distribución normal o <em>Gaussiana</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="docs/part5/distPoisson.html">5.3. Distribución de Poisson</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docs/part5/ejercicios-part5.html">5.4. Ejercicios</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="docs/part6/intro-errorEstandar.html">6. Incertidumbre de procesos aleatorios</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="docs/part6/teoremaLC.html">6.1. Teorema del límite central</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docs/part6/errorEstandar.html">6.2. Incertidumbre estándar</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docs/part6/justificacion-media.html">6.3. Demostraciones del valor más probable y de la incertidumbre estándar</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docs/part6/IntervaloConfianza.html">6.4. Intervalos de confianza</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docs/part6/propagacionError.html">6.5. Propagación de la incertidumbre</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docs/part6/comparaResul.html">6.6. Comparación de resultados</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docs/part6/ejercicios-part6.html">6.7. Ejercicios</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="docs/part7/intro-ajuste.html">7. Método de ajuste de datos</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="docs/part7/minimosCuad.html">7.1. Método de mínimos cuadrados</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docs/part7/AjusteNolineal.html">7.2. Método de ajuste no lineal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docs/part7/InterExtrapolacion.html">7.3. Interpolación y extrapolación de datos experimentales</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docs/part7/ejercicios-part7.html">7.4. Ejercicios</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Volumen 3</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="docs/part8/intro-complemento-error.html">8. Tópicos complementarios sobre análisis de la incertidumbre</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="docs/part8/error-Varios.html">8.1. Criterio de Chauvenet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docs/part8/error-dominante.html">8.2. Incertidumbre dominante</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docs/part8/combinacion-resultados.html">8.3. Combinación de resultados</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docs/part8/GUM-basico.html">8.4. GUM: Guía para el reporte de la incertidumbre experimental</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docs/part8/t-student.html">8.5. Distribución y corrección de t de student</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docs/part8/ejercicios-part8.html">8.6. Ejercicios</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="docs/part9/intro-complemento-ajuste.html">9. Conceptos avanzados sobre ajuste de datos</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="docs/part9/residuos.html">9.1. Residuos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docs/part9/chiCuadrado.html">9.2. Chi-cuadrado <span class="math notranslate nohighlight">\(\chi^2\)</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="docs/part9/ejercicios-part9.html">9.3. Ejercicios</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Complementos</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="docs/experimentos.html">10. Guía de experimentos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ipynbs/simulaciones.html">11. Compendio de simulaciones</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="ipynbs/auxProgramas.html">Programas usados en el libro</a></li>
+<li class="toctree-l1"><a class="reference internal" href="docs/Versiones.html">Versiones: actualizaciones y correcciones</a></li>
+<li class="toctree-l1"><a class="reference internal" href="docs/volumen-ref.html">Referencias</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Descarga esta pagina">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/intro.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Descargar archivo fuente"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Imprimir en PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Modo de pantalla completa"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="claro/oscuro" aria-label="claro/oscuro" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Búsqueda" aria-label="Búsqueda" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Notas de Física experimental</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contenido </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prefacio">Prefacio</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduccion">Introducción</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tabla-de-contenidos">Tabla de contenidos</a><ul class="nav section-nav flex-column">
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <div class="tex2jax_ignore mathjax_ignore section" id="notas-de-fisica-experimental">
+<h1>Notas de Física experimental<a class="headerlink" href="#notas-de-fisica-experimental" title="Enlazar permanentemente con este título">#</a></h1>
+<div class="figure align-default">
+<img alt="_images/logo.png" src="_images/logo.png" />
+</div>
+<div class="section" id="prefacio">
+<span id="sec-prefacio"></span><h2>Prefacio<a class="headerlink" href="#prefacio" title="Enlazar permanentemente con este título">#</a></h2>
+<p>Por el año 2010, en los albores de la década, el Instituto de Física de la Universidad de Antioquia se había embarcado en una transformación curricular, con el objetivo de actualizar el programa de física a los retos que presentaba el nuevo milenio. Es así como bajo el liderazgo del profesor Oscar Arnache se diseñó y comenzó a implementar una transformación completa de los cursos experimentales. Dicha transformación no se limitaba a una reorganización de los contenidos, sino que contemplaba un cambio de paradigma con respecto al papel que dichos cursos venían cumpliendo en el programa de física. Hasta entonces, la mayoría de los cursos experimentales eran de tipo demostrativo de los conceptos y leyes  estudiados en los cursos teórico, dejando en segundo plano el manejo de instrumentos de medida, la comunicación de resultados experimentales, y en particular, el análisis de la incertidumbre. Con la transformación, el nuevo objetivo primordial de los cursos experimentales era enseñar a los estudiantes los conceptos básicos para el diseño y realización de experimentos, el ánalisis de los resultados, incluyendo el ánalisis de la incertidumbre, y el reporte y comunicación de los resultados. Este cambio dejó a los cursos sin un texto guía de análisis de la incertidumbre, que sirviera tanto para el aprendizaje como de consulta. En los siguientes años comencé a escribir algunos borradores de guías en lenguaje Python que además de presentar los conceptos, permitieran la interacción de los estudiantes a partir de la simulación de experimentos o el procesamientos de datos experimentales. Surge entonces la idea de crear un texto, basado en lenguaje Python, que sirviera de texto guía para el análisis de la incertidumbre a todos los cursos básicos experimentales del Instituto de Física. En mayo de 2022 la Universidad me otorgó un año sabático con el objetivo de escribir el borrador de dicho texto guía, el cuál ha culminado con la primera versión de las notas de física experimental en mayo de 2023.</p>
+<p>El libro está pensado para ir escalando en rigurosidad a medida que el estudiante avanza en su programa de física y astronomía. Para ello, se ha dividido en tres volúmenes que comprenden nueve capítulos. El primer volumen está concebido de tal forma que contiene el mínimo necesario para realizar un análisis de incertidumbre de datos experimentales, con énfasis en sensibilizar al estudiante sobre la importancia y relevancia que tiene la experimentación en cualquier área de estudio. El nivel de matemáticas necesario es básico, pensando que los estudiantes no han visto cursos de cálculo. El segundo volumen, presenta el análisis de la incertidumbre de manera rigurosa, haciendo énfasis en las demostraciones más importantes, y entrega al estudiante nuevas herramientas para un mejor análisis de los datos experimentales. El nivel matemático de este volumen requiere de cálculo diferencial e integral. El volumen tres es un compendio de herramientas complementarias en el análisis de la incertidumbre, que permiten la extracción de información mas valiosa y confiable de los datos experimentales.</p>
+<p>A diferencia de los textos guías habituales, en estas notas he cambiado el esquema de interacción entre el libro y el lector, con el objetivo de propender una interacción más dinámica, como creo deben de ser los libros del futuro. Es por esto que el libro está escrito en formato <code class="docutils literal notranslate"><span class="pre">html</span></code> usando la plataforma <a class="reference external" href="https://jupyterbook.org">Jupyter Book</a> <span id="id1">[<a class="reference internal" href="docs/volumen-ref.html#id15" title="Executable Books Community. Jupyter book. February 2020. URL: https://doi.org/10.5281/zenodo.4539666, doi:10.5281/zenodo.4539666.">Community, 2020</a>]</span>, que integra una serie de herramientas en el ecosistema de <code class="docutils literal notranslate"><span class="pre">Python</span></code> para la publicación de documentos en línea, permitiendo la integración de código Python en el texto. La idea es que las notas estén a disposición de toda la comunidad en forma de <em>página web</em> que pueda ser consultada en cualquier momento. No obstante, es posible tener una versión <code class="docutils literal notranslate"><span class="pre">pdf</span></code> del libro, pero su potencial se desperdicia.</p>
+<p>Estas notas son una primera versión, por lo que a futuro espero complementar el volumen tres con más herramientas, así como escribir un volumen cuatro con conceptos avanzados para aquellos que quieran profundizar en el análisis de la incertidumbre experimental.</p>
+<p>Agradezco a todos aquellos que contribuyeron a lograr llevar a buen término la escritura de estas notas, en especial a mi padre quien me ayudó a mejorar la redacción, a Carlos Parra quien se tomó el tiempo de leer y hacer comentarios valiosos, y a Alejandro Mira por sus sugerencias con respecto al contenido. A todos, muchas gracias.</p>
+<p>— Edgar Rueda, mayo 2023</p>
+<hr class="docutils" />
+<blockquote>
+<div><p>Este libro se lo dedico a todos aquellos átomos que se organizaron de tal forma que permitieron la existencia de mi familia y amigos.</p>
+</div></blockquote>
+<hr class="docutils" />
+</div>
+<div class="section" id="introduccion">
+<span id="sec-introgeneral"></span><h2>Introducción<a class="headerlink" href="#introduccion" title="Enlazar permanentemente con este título">#</a></h2>
+<p>En el siglo 16 un eriduto de apellido Copernico se atrevió a proponer que la Tierra giraba alrededor del Sol, cuando para la época era aceptado que el Sol y los demás cuerpos celestes giraban alrededor de la Tierra, mientras que las estrellas a una gran distancia, permanecían estáticas en una esfera. El movimiento relativo medido experimentalmente de los cuerpos celestes no podía sanjar cuál teoría era la correcta, porque ambas teorías daban cuenta del movimiento. No obstante, para la época era bien conocida la técnica de paralaje<a class="footnote-reference brackets" href="#paralaje" id="id2">1</a>. De ser cierta la teoría de Copérnico, las medidas experimentales de paralaje mostrarían que la posición relativa de las estrellas mas cercanas con respecto a las más lejanas, cambiaría a medida que la Tierra girase alrededor del Sol. El astronomo Tycho Brahe, quien había hecho las medidas más precisas para la época de la posición de las estrellas, realizó el experimento sin detectar ningún movimiento por paralaje, concluyendo que contrario a lo dicho por Copérnico, la Tierra no se movía. El experimento de Tycho Brahe no necesariamente era erróneo, pero no era lo suficientemente preciso como para medir las pequeñisimas variaciones angulares que ocurrían con el paralaje, puesto que las estrellas están extremadamente distantes. Hubo que esperar a 1838 para tener la precisión suficiente en la medición de los ángulos, permitiendo al astrónomo alemán, Friedrich Bessel, detectar el paralaje de las estrellas del sistema 61 Signy, ubicándolas a <span class="math notranslate nohighlight">\(10.3\)</span> años-luz, errando en tan sólo un <span class="math notranslate nohighlight">\(10\,\%\)</span> del valor actualmente aceptado. Mas recientemente, el descubrimiento en 1998 de que el universo no solamente se está expandiendo, sino que también dicha expansión se está acelerando, llevó a la necesidad de medir con la mayor precisión posible dicha aceleración, conocida como la constante de Hubble <span class="math notranslate nohighlight">\(H_o\)</span>. Las medidas hechas hasta el momento se pueden organizar en dos grupos: el primer grupo calcula la constante usando la teoría más avanzada que se tiene hasta el momento, <span class="math notranslate nohighlight">\(\Lambda CDM\)</span>, a partir de la información que se tiene del universo primigenio: obteniendo un valor cercano a <span class="math notranslate nohighlight">\(67.4\)</span> kilómetros por segundo por megaparsec. El segundo grupo usa el método de la escalera de distancia, que comienza con la medición de paralaje de las estrellas más cercanas: obteniendo resultados cercanos a <span class="math notranslate nohighlight">\(73.3\)</span> kilómetros por segundo por megaparsec. El problema, es que ambas mediciones tienen una precisión lo suficientemente buena como para concluir que discrepan. Esto básicamente significa que el modelo <span class="math notranslate nohighlight">\(\Lambda CDM\)</span> está incompleto, y por lo tanto hay nueva física por descubrir. Pero la historia no termina allí, pues recientemente otro grupo, usando un método basado en el estudio de estrellas gigantes rojas encontró el valor de <span class="math notranslate nohighlight">\(69.8\)</span>, que no coincide con ninguno de los anteriores, pero que tiene una incetidumbre tal que no permite concluir. Luego el debate sigue abierto, y la consigna es realizar más y mejores mediciones de la constante antes de decidir si hay nueva física por descubrir. Cómo este, hay muchos ejemplos en al historia antigua y reciente de la ciencia, en la cuál el experimento juega un papel preponderante <a class="footnote-reference brackets" href="#qm" id="id3">2</a>.</p>
+<p>Desde el advenimiento de la ciencia moderna la teoría y la experimentación han mantenido una relación simbiótica e interdependiente. No obstante, mientras que la teoría puede ser arriesgada haciendo uso de una creatividad sin límites, la experimentación, en su papel de juez supremo, no puede correr riesgos en sus deliberaciones, pues sus juicios de verdad siempre estarán cargados de una gran responsabilidad.</p>
+<p>La física, y en general todas las ciencias naturales, se apoyan en la experimentación para la validación de sus teorías y predicciones. El experimento se convierte en el juez supremo que refuta o apoya una idea o forma de entender el universo en el que vivimos. Tan importante tarea nos obliga a realizar nuestros experimentos de la manera más correcta posible con el objeto de evitar juicios de error subjetivos o surgidos de errores humanos o experimentales. Como experimentalistas debemos hacer entonces todo lo posible por realizar los mejores experimentos y aceptar de forma humilde las limitaciones en las conclusiones que se pueden sacar de los resultados obtenidos.</p>
+<p>En los siguientes capítulos y secciones, se pretende ofrecer al lector las herramientas y conceptos básicos que le permitan analizar y reportar de forma correcta los resultados de un experimento.</p>
+</div>
+<div class="section" id="tabla-de-contenidos">
+<h2>Tabla de contenidos<a class="headerlink" href="#tabla-de-contenidos" title="Enlazar permanentemente con este título">#</a></h2>
+<div class="toctree-wrapper compound">
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Volumen 1</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="docs/part1/intro-gen1.html">1. Generalidades</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="docs/part1/notacion.html">1.1. Notación correcta</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docs/part1/orden-magnitud.html">1.2. Órdenes de magnitud, potencias de 10 y escala de decibeles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docs/part1/cifras-significativas.html">1.3. Cifras significativas y redondeo de cifras</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docs/part1/tablas.html">1.4. Recopilación de datos experimentales: tablas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docs/part1/ejercicios-part1.html">1.5. Ejercicios</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="docs/part4/intro-estadistica.html">2. Conceptos básicos de estadística</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="docs/part4/esta-def.html">2.1. Definiciones básicas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docs/part4/dist-binomial.html">2.2. Distribución binomial</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docs/part4/ejercicios-part4.html">2.3. Ejercicios</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="docs/part2/intro-incertidumbre.html">3. Incertidumbre</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="docs/part2/definicion-incertidumbre.html">3.1. Definición de la Incertidumbre</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docs/part2/errores.html">3.2. Incertidumbres aleatorias y errores sistemáticos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docs/part2/precision-exactitud.html">3.3. Precision y Exactitud</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docs/part2/reporte-incertidumbre.html">3.4. Reporte de la Incertidumbre</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docs/part2/estimacion-incertidumbre.html">3.5. Estimación incertidumbre</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docs/part2/incertidumbre-unamedida.html">3.6. Incertidumbre de una única medida</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docs/part2/error-relativo.html">3.7. Incertidumbre relativa</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docs/part2/error-indirecto.html">3.8. Determinación de la incertidumbre de una variable indirecta</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docs/part2/ejercicios-part2.html">3.9. Ejercicios</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="docs/part3/intro-graficas.html">4. Graficación de datos</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="docs/part3/graficas.html">4.1. Graficación de datos experimentales</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docs/part3/linearizacion.html">4.2. Linearización de los datos experimentales</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docs/part3/ajusteLineal.html">4.3. Ajuste lineal de datos experimentales</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docs/part3/ejercicios-part3.html">4.4. Ejercicios</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Volumen 2</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="docs/part5/intro-estadistica2.html">5. Conceptos de estadística para el análisis de la incertidumbre aleatoria</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="docs/part5/def-estadistica.html">5.1. Función densidad de probabilidad</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docs/part5/distNormal.html">5.2. Distribución normal o <em>Gaussiana</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="docs/part5/distPoisson.html">5.3. Distribución de Poisson</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docs/part5/ejercicios-part5.html">5.4. Ejercicios</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="docs/part6/intro-errorEstandar.html">6. Incertidumbre de procesos aleatorios</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="docs/part6/teoremaLC.html">6.1. Teorema del límite central</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docs/part6/errorEstandar.html">6.2. Incertidumbre estándar</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docs/part6/justificacion-media.html">6.3. Demostraciones del valor más probable y de la incertidumbre estándar</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docs/part6/IntervaloConfianza.html">6.4. Intervalos de confianza</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docs/part6/propagacionError.html">6.5. Propagación de la incertidumbre</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docs/part6/comparaResul.html">6.6. Comparación de resultados</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docs/part6/ejercicios-part6.html">6.7. Ejercicios</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="docs/part7/intro-ajuste.html">7. Método de ajuste de datos</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="docs/part7/minimosCuad.html">7.1. Método de mínimos cuadrados</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docs/part7/AjusteNolineal.html">7.2. Método de ajuste no lineal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docs/part7/InterExtrapolacion.html">7.3. Interpolación y extrapolación de datos experimentales</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docs/part7/ejercicios-part7.html">7.4. Ejercicios</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Volumen 3</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="docs/part8/intro-complemento-error.html">8. Tópicos complementarios sobre análisis de la incertidumbre</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="docs/part8/error-Varios.html">8.1. Criterio de Chauvenet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docs/part8/error-dominante.html">8.2. Incertidumbre dominante</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docs/part8/combinacion-resultados.html">8.3. Combinación de resultados</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docs/part8/GUM-basico.html">8.4. GUM: Guía para el reporte de la incertidumbre experimental</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docs/part8/t-student.html">8.5. Distribución y corrección de t de student</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docs/part8/ejercicios-part8.html">8.6. Ejercicios</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="docs/part9/intro-complemento-ajuste.html">9. Conceptos avanzados sobre ajuste de datos</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="docs/part9/residuos.html">9.1. Residuos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docs/part9/chiCuadrado.html">9.2. Chi-cuadrado <span class="math notranslate nohighlight">\(\chi^2\)</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="docs/part9/ejercicios-part9.html">9.3. Ejercicios</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Complementos</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="docs/experimentos.html">10. Guía de experimentos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ipynbs/simulaciones.html">11. Compendio de simulaciones</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="ipynbs/auxProgramas.html">Programas usados en el libro</a></li>
+<li class="toctree-l1"><a class="reference internal" href="docs/Versiones.html">Versiones: actualizaciones y correcciones</a></li>
+<li class="toctree-l1"><a class="reference internal" href="docs/volumen-ref.html">Referencias</a></li>
+</ul>
+</div>
+<hr class="footnotes docutils" />
+<dl class="footnote brackets">
+<dt class="label" id="paralaje"><span class="brackets"><a class="fn-backref" href="#id2">1</a></span></dt>
+<dd><p>La técnica de paralaje se basa en observar un objeto distante desde dos puntos distintos cuya distancia de separación se conoce. En cada posición se mide el ángulo que forma el objeto con respecto a un punto distante, para luego usando trigonometría determinar la distancia a la que se encuentra el objeto. Usted puede experimentar el paralaje ubicando un lapiz cerca a sus ojos, y observando como este se mueve con respecto al fondo, al observarlo con un solo ojo a la vez.</p>
+</dd>
+<dt class="label" id="qm"><span class="brackets"><a class="fn-backref" href="#id3">2</a></span></dt>
+<dd><p>Los artículos completos sobre esta historia se pueden encontrar en Quanta Magazine: <a class="reference external" href="https://www.quantamagazine.org/astronomers-get-their-wish-and-the-hubble-crisis-gets-worse-20201217/">«Astronomers get their wish, and a cosmic crisis get worse»</a> y <a class="reference external" href="https://www.quantamagazine.org/cosmologists-debate-how-fast-the-universe-is-expanding-20190808/">«Cosmologist debate how fast the space is expanding»</a>.</p>
+</dd>
+</dl>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "executablebooks/jupyter-book",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="right-next"
+       href="docs/part1/intro-gen1.html"
+       title="siguiente página">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">siguiente</p>
+        <p class="prev-next-title"><span class="section-number">1. </span>Generalidades</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contenido
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prefacio">Prefacio</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduccion">Introducción</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tabla-de-contenidos">Tabla de contenidos</a><ul class="nav section-nav flex-column">
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+Por Edgar Rueda, profesor asociado, Universidad de Antioquia
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2023. versión 0.2.1.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" /></a><br /><span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">Notas de Físca Experimental</span> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International License</a>.
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
