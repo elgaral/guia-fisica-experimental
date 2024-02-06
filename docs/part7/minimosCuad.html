@@ -1,0 +1,744 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="es" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>7.1. Método de mínimos cuadrados &#8212; Notas de Física Experimental</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/myfile.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/.ipynb_checkpoints/myfile-checkpoint.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/translations.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/part7/minimosCuad';</script>
+    <link rel="index" title="Índice" href="../../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../../search.html" />
+    <link rel="next" title="7.2. Método de ajuste no lineal" href="AjusteNolineal.html" />
+    <link rel="prev" title="7. Método de ajuste de datos" href="intro-ajuste.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="es"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Saltar al contenido principal</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/Logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../../_static/Logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    Notas de Física experimental
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Volumen 1</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../part1/intro-gen1.html">1. Generalidades</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../part1/notacion.html">1.1. Notación correcta</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../part1/orden-magnitud.html">1.2. Órdenes de magnitud, potencias de 10 y escala de decibeles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../part1/cifras-significativas.html">1.3. Cifras significativas y redondeo de cifras</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../part1/tablas.html">1.4. Recopilación de datos experimentales: tablas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../part1/ejercicios-part1.html">1.5. Ejercicios</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../part4/intro-estadistica.html">2. Conceptos básicos de estadística</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../part4/esta-def.html">2.1. Definiciones básicas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../part4/dist-binomial.html">2.2. Distribución binomial</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../part4/ejercicios-part4.html">2.3. Ejercicios</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../part2/intro-incertidumbre.html">3. Incertidumbre</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../part2/definicion-incertidumbre.html">3.1. Definición de la Incertidumbre</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../part2/errores.html">3.2. Incertidumbres aleatorias y errores sistemáticos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../part2/precision-exactitud.html">3.3. Precision y Exactitud</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../part2/reporte-incertidumbre.html">3.4. Reporte de la Incertidumbre</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../part2/estimacion-incertidumbre.html">3.5. Estimación incertidumbre</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../part2/incertidumbre-unamedida.html">3.6. Incertidumbre de una única medida</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../part2/error-relativo.html">3.7. Incertidumbre relativa</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../part2/error-indirecto.html">3.8. Determinación de la incertidumbre de una variable indirecta</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../part2/ejercicios-part2.html">3.9. Ejercicios</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../part3/intro-graficas.html">4. Graficación de datos</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../part3/graficas.html">4.1. Graficación de datos experimentales</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../part3/linearizacion.html">4.2. Linearización de los datos experimentales</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../part3/ajusteLineal.html">4.3. Ajuste lineal de datos experimentales</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../part3/ejercicios-part3.html">4.4. Ejercicios</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Volumen 2</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../part5/intro-estadistica2.html">5. Conceptos de estadística para el análisis de la incertidumbre aleatoria</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../part5/def-estadistica.html">5.1. Función densidad de probabilidad</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../part5/distNormal.html">5.2. Distribución normal o <em>Gaussiana</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../part5/distPoisson.html">5.3. Distribución de Poisson</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../part5/ejercicios-part5.html">5.4. Ejercicios</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../part6/intro-errorEstandar.html">6. Incertidumbre de procesos aleatorios</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../part6/teoremaLC.html">6.1. Teorema del límite central</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../part6/errorEstandar.html">6.2. Incertidumbre estándar</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../part6/justificacion-media.html">6.3. Demostraciones del valor más probable y de la incertidumbre estándar</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../part6/IntervaloConfianza.html">6.4. Intervalos de confianza</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../part6/propagacionError.html">6.5. Propagación de la incertidumbre</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../part6/comparaResul.html">6.6. Comparación de resultados</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../part6/ejercicios-part6.html">6.7. Ejercicios</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="intro-ajuste.html">7. Método de ajuste de datos</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">7.1. Método de mínimos cuadrados</a></li>
+<li class="toctree-l2"><a class="reference internal" href="AjusteNolineal.html">7.2. Método de ajuste no lineal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="InterExtrapolacion.html">7.3. Interpolación y extrapolación de datos experimentales</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ejercicios-part7.html">7.4. Ejercicios</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Volumen 3</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../part8/intro-complemento-error.html">8. Tópicos complementarios sobre análisis de la incertidumbre</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../part8/error-Varios.html">8.1. Criterio de Chauvenet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../part8/error-dominante.html">8.2. Incertidumbre dominante</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../part8/combinacion-resultados.html">8.3. Combinación de resultados</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../part8/GUM-basico.html">8.4. GUM: Guía para el reporte de la incertidumbre experimental</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../part8/t-student.html">8.5. Distribución y corrección de t de student</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../part8/ejercicios-part8.html">8.6. Ejercicios</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../part9/intro-complemento-ajuste.html">9. Conceptos avanzados sobre ajuste de datos</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../part9/residuos.html">9.1. Residuos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../part9/chiCuadrado.html">9.2. Chi-cuadrado <span class="math notranslate nohighlight">\(\chi^2\)</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../part9/ejercicios-part9.html">9.3. Ejercicios</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Complementos</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../experimentos.html">10. Guía de experimentos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ipynbs/simulaciones.html">11. Compendio de simulaciones</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../ipynbs/auxProgramas.html">Programas usados en el libro</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Versiones.html">Versiones: actualizaciones y correcciones</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../volumen-ref.html">Referencias</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li>
+<button onclick="initThebeSBT()"
+  class="btn btn-sm btn-launch-thebe dropdown-item"
+  title="Launch Thebe"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="btn__text-container">Live Code</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Descarga esta pagina">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/docs/part7/minimosCuad.ipynb" target="_blank"
+   class="btn btn-sm btn-download-notebook-button dropdown-item"
+   title="Descargar archivo de cuaderno"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-code"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="../../_sources/docs/part7/minimosCuad.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Descargar archivo fuente"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Imprimir en PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Modo de pantalla completa"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="claro/oscuro" aria-label="claro/oscuro" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Búsqueda" aria-label="Búsqueda" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Método de mínimos cuadrados</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contenido </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#incertidumbre-comun">7.1.1. Incertidumbre común</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#minimos-cuadrados-con-incetidumbres-no-uniformes">7.1.2. Mínimos cuadrados con incetidumbres no uniformes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplo-bola-rodando-parte-4">7.1.3. Ejemplo: bola rodando (parte 4)</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <div class="tex2jax_ignore mathjax_ignore section" id="metodo-de-minimos-cuadrados">
+<span id="sec-minimoscuad"></span><h1><span class="section-number">7.1. </span>Método de mínimos cuadrados<a class="headerlink" href="#metodo-de-minimos-cuadrados" title="Enlazar permanentemente con este título">#</a></h1>
+<p>En la sección <a class="reference internal" href="../part3/ajusteLineal.html#sec-ajustelineal"><span class="std std-numref">Sección 4.3</span></a> se hizo uso de las ecuaciones <a class="reference internal" href="../part3/ajusteLineal.html#equation-ec-intercepto">(4.1)</a> a <a class="reference internal" href="../part3/ajusteLineal.html#equation-ec-incertidumbrecomun">(4.6)</a>, derivadas del método de mínimos cuadrados, con el fin de ajustar unos datos experimentales a una línea con intercepto <span class="math notranslate nohighlight">\(c\)</span> y pendiente <span class="math notranslate nohighlight">\(m\)</span>. En esta sección se obtendrán dichas ecuaciones a partir de los fundamentos matemáticos y estadísticos que se han aprendido.</p>
+<p>Se tienen <span class="math notranslate nohighlight">\(N\)</span> datos experimentales correspondientes a unas variables independientes <span class="math notranslate nohighlight">\(x_i\)</span>, que se consideran tienen una incertidumbre despreciable, y unas variables dependientes <span class="math notranslate nohighlight">\(y_i\)</span>, que se sabe tienen una incertidumbre <span class="math notranslate nohighlight">\(\alpha\)</span> definida por una distribución normal, es decir, la probabilidad de obtener el valor <span class="math notranslate nohighlight">\(y_i\)</span> se puede estimar con una distribución normal, de media <span class="math notranslate nohighlight">\(\mu_i\)</span> y desviación estándar <span class="math notranslate nohighlight">\(\alpha\)</span><a class="footnote-reference brackets" href="#alpha" id="id1">1</a>.</p>
+<p>También se sabe que los datos experimentales se ajustan a la función <span class="math notranslate nohighlight">\(y_i = mx_i +c\)</span>. La pregunta que se tiene es ¿para qué valores de <span class="math notranslate nohighlight">\(m\)</span> y <span class="math notranslate nohighlight">\(c\)</span> los datos y la función se ajustan mejor?<a class="footnote-reference brackets" href="#ajustan" id="id2">2</a></p>
+<p>Como la probabilidad de obtener en una medida el valor <span class="math notranslate nohighlight">\(y_i\)</span>, para los parámetros <span class="math notranslate nohighlight">\(x_i\)</span>, <span class="math notranslate nohighlight">\(m\)</span>, y <span class="math notranslate nohighlight">\(c\)</span>, es igual a</p>
+<div class="math notranslate nohighlight" id="equation-ec-proby1">
+<span class="eqno">(7.1)<a class="headerlink" href="#equation-ec-proby1" title="Enlace permanente a esta ecuación">#</a></span>\[ G(y_i;x_i,m,c) \propto \Large\text{e}^{-\frac{(y_i - \mu_i)^2}{2\alpha^2}} ,\]</div>
+<p>donde <span class="math notranslate nohighlight">\(\mu_i = mx_i + c\)</span>, la probabilidad total <span class="math notranslate nohighlight">\(G_T\)</span> de obtener los <span class="math notranslate nohighlight">\(N\)</span> valores <span class="math notranslate nohighlight">\(y_i\)</span> será</p>
+<div class="math notranslate nohighlight">
+\[ G_T \propto \Large\text{e}^{-\frac{(y_1 - \mu_1)^2}{2\alpha^2}}\normalsize\times\Large\text{e}^{-\frac{(y_2 - \mu_2)^2}{2\alpha^2}}\normalsize\times\, ...\,\times\, \Large\text{e}^{-\frac{(y_N - \mu_N)^2}{2\alpha^2}} ,\]</div>
+<p>es decir,</p>
+<div class="math notranslate nohighlight" id="equation-ec-proby2">
+<span class="eqno">(7.2)<a class="headerlink" href="#equation-ec-proby2" title="Enlace permanente a esta ecuación">#</a></span>\[ G_T \propto \Large\text{e}^{-\sum_{i=1}^N \frac{(y_i - \mu_i)^2}{2\alpha^2}} .\]</div>
+<p>Usando el método de máxima verosimilitud (<a class="reference internal" href="../part6/justificacion-media.html#subsec-bestestimadores"><span class="std std-numref">Sección 6.3.3</span></a>) para encontrar los valores de <span class="math notranslate nohighlight">\(m\)</span> y <span class="math notranslate nohighlight">\(c\)</span>, con los que se obtiene el mejor ajuste, se debe maximizar la probabilidad total <span class="math notranslate nohighlight">\(G_T\)</span>. Maximizar la probabilidad total es equivalente a minimizar la expresión del argumento de la exponencial:<a class="footnote-reference brackets" href="#chi2" id="id3">3</a></p>
+<div class="math notranslate nohighlight" id="equation-ec-proby3">
+<span class="eqno">(7.3)<a class="headerlink" href="#equation-ec-proby3" title="Enlace permanente a esta ecuación">#</a></span>\[ \tilde\chi^2 = -\sum_{i=1}^N \frac{(y_i - \mu_i)^2}{2\alpha^2} .\]</div>
+<p>Usando el método de <em>máximos y mínimos</em> de cálculo, se procede con la determinación del mejor valor de <span class="math notranslate nohighlight">\(m\)</span> y <span class="math notranslate nohighlight">\(c\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[ \frac{\partial \tilde\chi^2}{\partial m} = -\sum_{i=1}^N \frac{(y_i - m x_i - c)(-x_i)}{\alpha^2} = 0 \]</div>
+<div class="math notranslate nohighlight">
+\[ \sum_{i=1}^N (y_i - m x_i - c)x_i = 0 \]</div>
+<div class="math notranslate nohighlight">
+\[ \sum_{i=1}^N x_i y_i - m \sum_{i=1}^N x_i^2 - c \sum_{i=1}^Nx_i = 0 \]</div>
+<div class="math notranslate nohighlight" id="equation-ec-proby4">
+<span class="eqno">(7.4)<a class="headerlink" href="#equation-ec-proby4" title="Enlace permanente a esta ecuación">#</a></span>\[ m = \frac{\sum_{i=1}^N x_i y_i - c\sum_{i=1}^N x_i}{\sum_{i=1}^N x_i^2} .\]</div>
+<p>Derivando ahora con respecto a <span class="math notranslate nohighlight">\(c\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[ \frac{\partial \tilde\chi^2}{\partial c} = -\sum_{i=1}^N \frac{(y_i - m x_i - c)(-1)}{\alpha^2} = 0 \]</div>
+<div class="math notranslate nohighlight">
+\[ \sum_{i=1}^N (y_i - m x_i - c) = 0 \]</div>
+<div class="math notranslate nohighlight">
+\[ \sum_{i=1}^N y_i - m \sum_{i=1}^N x_i - c N = 0 \]</div>
+<div class="math notranslate nohighlight" id="equation-ec-proby5">
+<span class="eqno">(7.5)<a class="headerlink" href="#equation-ec-proby5" title="Enlace permanente a esta ecuación">#</a></span>\[ c = \frac{-m\sum_{i=1}^N x_i + \sum_{i=1}^N y_i}{N} .\]</div>
+<p>Reemplazando <a class="reference internal" href="#equation-ec-proby5">(7.5)</a> en <a class="reference internal" href="#equation-ec-proby4">(7.4)</a>,</p>
+<div class="math notranslate nohighlight">
+\[ m = \frac{N\sum_{i=1}^N x_i y_i + m \big(\sum_{i=1}^N x_i\big)^2 - \sum_{i=1}^N x_i\sum_{i=1}^N y_i}{N \sum_{i=1}^N x_i^2} \]</div>
+<div class="math notranslate nohighlight">
+\[ m\Bigg( N\sum_{i=1}^N x_i^2 - \bigg( \sum_{i=1}^N x_i \bigg)^2 \Bigg) = N\sum_{i=1}^N x_i y_i - \sum_{i=1}^N x_i \sum_{i=1}^N y_i \]</div>
+<div class="math notranslate nohighlight" id="equation-ec-proby6">
+<span class="eqno">(7.6)<a class="headerlink" href="#equation-ec-proby6" title="Enlace permanente a esta ecuación">#</a></span>\[\large m = \frac{N\sum_{i=1}^N x_i y_i - \sum_{i=1}^N x_i \sum_{i=1}^N y_i}{\Delta} ,\]</div>
+<p>donde</p>
+<div class="math notranslate nohighlight" id="equation-ec-proby7">
+<span class="eqno">(7.7)<a class="headerlink" href="#equation-ec-proby7" title="Enlace permanente a esta ecuación">#</a></span>\[\Delta = N\sum_{i=1}^N x_i^2 - \bigg( \sum_{i=1}^N x_i \bigg)^2 .\]</div>
+<p>Reemplazando <a class="reference internal" href="#equation-ec-proby6">(7.6)</a> en <a class="reference internal" href="#equation-ec-proby5">(7.5)</a>, y reorganizando términos, se obtiene</p>
+<div class="math notranslate nohighlight" id="equation-ec-proby8">
+<span class="eqno">(7.8)<a class="headerlink" href="#equation-ec-proby8" title="Enlace permanente a esta ecuación">#</a></span>\[\large c = \frac{\sum_{i=1}^N x_i^2 \sum_{i=1}^N y_i - \sum_{i=1}^N x_i y_i \sum_{i=1}^N x_i}{\Delta} .\]</div>
+<p>Las ecuaciones <a class="reference internal" href="#equation-ec-proby6">(7.6)</a>, <a class="reference internal" href="#equation-ec-proby7">(7.7)</a> y <a class="reference internal" href="#equation-ec-proby8">(7.8)</a>, permiten determinar el intercepto <span class="math notranslate nohighlight">\(c\)</span> y la pendiente <span class="math notranslate nohighlight">\(m\)</span> de la línea que mejor se ajusta a los datos experimentales. No obstante, como la variable experimental <span class="math notranslate nohighlight">\(y_i\)</span> tiene una incertidumbre <span class="math notranslate nohighlight">\(\alpha\)</span>, es de esperarse que tanto la pendiente, como el intercepto, tengan también una incertidumbre. Para estimar dicha incertidumbre se usa el método de propagación de la incertidumbre de la <a class="reference internal" href="../part6/propagacionError.html#subsec-errorpequeno"><span class="std std-numref">Sección 6.5.1</span></a>.</p>
+<p>La derivada parcial de la ecuación <a class="reference internal" href="#equation-ec-proby6">(7.6)</a> con respecto a <span class="math notranslate nohighlight">\(y_i\)</span> es</p>
+<div class="math notranslate nohighlight">
+\[ \frac{\partial m}{\partial y_i} = \frac{N x_i - \sum_{j=1}^N x_j}{\Delta} ,\]</div>
+<p>y por lo tanto, la incertidumbre en la pendiente <span class="math notranslate nohighlight">\(m\)</span> es</p>
+<div class="math notranslate nohighlight">
+\[ \alpha_m^2 = \sum_{i=1}^N \Bigg( \frac{N x_i - \sum_{j=1}^N x_j}{\Delta} \Bigg)^2 \alpha^2 \]</div>
+<div class="math notranslate nohighlight">
+\[ \alpha_m^2 = \sum_{i=1}^N \Bigg( \frac{N^2 x_i^2 - 2N x_i \sum_{j=1}^N x_j + \big(\sum_{j=1}^N x_j\big)^2}{\Delta^2} \Bigg) \alpha^2 \]</div>
+<div class="math notranslate nohighlight">
+\[ \alpha_m^2 = \frac{N^2 \sum_{i=1}^N x_i^2 - 2N \big(\sum_{i=1}^N x_i\big)^2 + N\big(\sum_{j=1}^N x_j\big)^2}{\Delta^2} \alpha^2 \]</div>
+<div class="math notranslate nohighlight">
+\[ \alpha_m^2 = \frac{N\Delta}{\Delta^2}\alpha^2 ,\]</div>
+<p>es decir,</p>
+<div class="math notranslate nohighlight" id="equation-ec-proby9">
+<span class="eqno">(7.9)<a class="headerlink" href="#equation-ec-proby9" title="Enlace permanente a esta ecuación">#</a></span>\[\large \alpha_m = \sqrt{\frac{N}{\Delta}}\alpha \]</div>
+<p>La derivada parcial de la ecaución <a class="reference internal" href="#equation-ec-proby8">(7.8)</a> con respecto a <span class="math notranslate nohighlight">\(y_i\)</span> es</p>
+<div class="math notranslate nohighlight">
+\[ \frac{\partial c}{\partial y_i} = \frac{\sum_{j=1}^N x_j^2 - x_i \sum_{j=1}^N x_j}{\Delta} ,\]</div>
+<p>y por lo tanto, la incertidumbre en el intercepto <span class="math notranslate nohighlight">\(c\)</span> es</p>
+<div class="math notranslate nohighlight">
+\[ \alpha_c^2 = \sum_{i=1}^N \Bigg( \frac{\sum_{j=1}^N x_j^2 - x_i \sum_{j=1}^N x_j}{\Delta} \Bigg)^2 \alpha^2 .\]</div>
+<p>Con un procedimiento similar al utilizado para la pendiente, encontramos que la incertidumbre es</p>
+<div class="math notranslate nohighlight" id="equation-ec-proby10">
+<span class="eqno">(7.10)<a class="headerlink" href="#equation-ec-proby10" title="Enlace permanente a esta ecuación">#</a></span>\[\large \alpha_c = \sqrt{\frac{\sum_{i=1}^N x_i^2}{\Delta}}\alpha .\]</div>
+<div class="section" id="incertidumbre-comun">
+<span id="subsec-incertidumbrecomun"></span><h2><span class="section-number">7.1.1. </span>Incertidumbre común<a class="headerlink" href="#incertidumbre-comun" title="Enlazar permanentemente con este título">#</a></h2>
+<p>Las ecuaciones <a class="reference internal" href="#equation-ec-proby9">(7.9)</a> y <a class="reference internal" href="#equation-ec-proby10">(7.10)</a> indican que la incertidumbre de <span class="math notranslate nohighlight">\(m\)</span> y <span class="math notranslate nohighlight">\(c\)</span> son proporcionales a la incertidumbre de los datos experimentales: hasta ahora considerando que todos los valores <span class="math notranslate nohighlight">\(y_i\)</span> tienen la misma incertidumbre <span class="math notranslate nohighlight">\(\alpha\)</span>. Pero, en algunas ocasiones puede que no se determine la incertidumbre de las cantidades <span class="math notranslate nohighlight">\(y_i\)</span>. No obstante, como es de esperarse que los valores <span class="math notranslate nohighlight">\(y_i\)</span> se distribuyan de forma aleatoria (distribución normal) alrededor de los respectivos valores <span class="math notranslate nohighlight">\(\mu_i\)</span>, se puede estimar la incertidumbre de la siguiente forma<a class="footnote-reference brackets" href="#otros" id="id4">4</a>:</p>
+<div class="math notranslate nohighlight" id="equation-ec-incertidumbrecomun2">
+<span class="eqno">(7.11)<a class="headerlink" href="#equation-ec-incertidumbrecomun2" title="Enlace permanente a esta ecuación">#</a></span>\[ \alpha_{ic} = \sqrt{\frac{1}{N-2}\sum_i (y_i - mx_i - c)^2}. \]</div>
+<p><span class="math notranslate nohighlight">\(\alpha_{ic}\)</span> se denomina la incertidumbre común, que se espera tengan todos los valores <span class="math notranslate nohighlight">\(y_i\)</span>, si estos realmente se ajustan a la curva líneal de pendiente <span class="math notranslate nohighlight">\(m\)</span> e intercepto <span class="math notranslate nohighlight">\(c\)</span>. Note que en este caso se divide por el factor <span class="math notranslate nohighlight">\(N-2\)</span>, porque se tienen dos parámetros, <span class="math notranslate nohighlight">\(m\)</span> y <span class="math notranslate nohighlight">\(c\)</span>, que deben ser determinados con los mismos valores experimentales. En contraste, para el caso de la determinación de la incertidumbre estándar, sólo se necesitaba un parámetro, el valor más probable <span class="math notranslate nohighlight">\(\bar x\)</span> (ver ecuación <a class="reference internal" href="../part6/errorEstandar.html#equation-ec-errorestandar-varianza">(6.3)</a>). Ciertamente, por la forma en que se determinó la incertidumbre común, esta es la mejor estimación de las incertidumbres de los datos experimentales, si el modelo realmente se ajusta a los datos. Entonces, en general, para determinar las incertidumbres de <span class="math notranslate nohighlight">\(m\)</span> y <span class="math notranslate nohighlight">\(c\)</span> se utilizará la incertidumbre común:</p>
+<div class="math notranslate nohighlight" id="equation-ec-proby9b">
+<span class="eqno">(7.12)<a class="headerlink" href="#equation-ec-proby9b" title="Enlace permanente a esta ecuación">#</a></span>\[\large \alpha_m = \sqrt{\frac{N}{\Delta}}\alpha_{ic} ,\]</div>
+<p>y</p>
+<div class="math notranslate nohighlight" id="equation-ec-proby10b">
+<span class="eqno">(7.13)<a class="headerlink" href="#equation-ec-proby10b" title="Enlace permanente a esta ecuación">#</a></span>\[\large \alpha_c = \sqrt{\frac{\sum_{i=1}^N x_i^2}{\Delta}}\alpha_{ic} .\]</div>
+<p>En el caso en que exista total seguridad de la veracidad del modelo, la incertidumbre común también servirá para verificar si la incertidumbre <span class="math notranslate nohighlight">\(\alpha\)</span>, que se estimó para los valores <span class="math notranslate nohighlight">\(y_i\)</span>, es la correcta. Si <span class="math notranslate nohighlight">\(\alpha\)</span> es mucho menor que <span class="math notranslate nohighlight">\(\alpha_{ic}\)</span> (menos de la mitad), es muy probable se haya subestimado la incertidumbre de <span class="math notranslate nohighlight">\(y_i\)</span>, y por lo tanto no se esté considerando alguna incertidumbre experimental. Por el contrario, si <span class="math notranslate nohighlight">\(\alpha\)</span> es mucho mayor que <span class="math notranslate nohighlight">\(\alpha_{ic}\)</span> (más del doble), se está siendo muy conservador, sobrestimando la incertidumbre.</p>
+</div>
+<div class="section" id="minimos-cuadrados-con-incetidumbres-no-uniformes">
+<span id="subsec-mincuadnu"></span><h2><span class="section-number">7.1.2. </span>Mínimos cuadrados con incetidumbres no uniformes<a class="headerlink" href="#minimos-cuadrados-con-incetidumbres-no-uniformes" title="Enlazar permanentemente con este título">#</a></h2>
+<p>Hasta ahora, se ha supuesto que la incertidumbre de los valores experimentales <span class="math notranslate nohighlight">\(y_i\)</span> era la misma para todos los valores. No obstante, es común determinar los valores experimentales con diferentes incertidumbres, debido a los diferentes rangos de la cantidad física, que pueden obligar a usar diferentes técnicas, con diferentes precisiones. Esta situación modifica las expresiones encontradas por mínimos cuadrados, de forma tal que incluyan el efecto de las diferentes precisiones. Es de esperarse, que un valor con una mínima incertidumbre, tenga mayor peso en el ajuste que un valor con una gran incertidumbre. A continuación presentamos las expresiones para la pendiente <span class="math notranslate nohighlight">\(m\)</span>, el intercepto <span class="math notranslate nohighlight">\(c\)</span>, y sus incertidumbres, que toman encuenta la incertidumbre <span class="math notranslate nohighlight">\(\alpha_i\)</span> de cada variable dependiente <span class="math notranslate nohighlight">\(y_i\)</span> (<span id="id5">[<a class="reference internal" href="../volumen-ref.html#id2" title="Ifan G Hughes and Thomas P.A. Hase. Measurements and their uncertainties. Oxford University press, 1 edition, 2010. ISBN 978-0-19-956632-7.">Hughes and Hase, 2010</a>]</span>, sección 6.3).</p>
+<div class="math notranslate nohighlight" id="equation-ec-mc1">
+<span class="eqno">(7.14)<a class="headerlink" href="#equation-ec-mc1" title="Enlace permanente a esta ecuación">#</a></span>\[\large m = \frac{\sum_{i=1}^N w_i \sum_{i=1}^N w_i x_i y_i - \sum_{i=1}^N w_i x_i \sum_{i=1}^N w_i y_i}{\Delta'} ,\]</div>
+<div class="math notranslate nohighlight" id="equation-ec-mc2">
+<span class="eqno">(7.15)<a class="headerlink" href="#equation-ec-mc2" title="Enlace permanente a esta ecuación">#</a></span>\[\large c = \frac{\sum_{i=1}^N w_i x_i^2 \sum_{i=1}^N w_i y_i - \sum_{i=1}^N w_i x_i y_i \sum_{i=1}^N w_i x_i}{\Delta'} ,\]</div>
+<div class="math notranslate nohighlight" id="equation-ec-mc3">
+<span class="eqno">(7.16)<a class="headerlink" href="#equation-ec-mc3" title="Enlace permanente a esta ecuación">#</a></span>\[\large \alpha_m = \sqrt{\frac{\sum_{i=1}^N w_i}{\Delta'}} ,\]</div>
+<div class="math notranslate nohighlight" id="equation-ec-mc4">
+<span class="eqno">(7.17)<a class="headerlink" href="#equation-ec-mc4" title="Enlace permanente a esta ecuación">#</a></span>\[\large \alpha_c = \sqrt{\frac{\sum_{i=1}^N w_i x_i^2}{\Delta'}} ,\]</div>
+<div class="math notranslate nohighlight" id="equation-ec-mc5">
+<span class="eqno">(7.18)<a class="headerlink" href="#equation-ec-mc5" title="Enlace permanente a esta ecuación">#</a></span>\[\Delta' = \sum_{i=1}^N w_i \sum_{i=1}^N w_i x_i^2 - \bigg( \sum_{i=1}^N w_i x_i \bigg)^2 .\]</div>
+<p>El factor de peso es el inverso del cuadrado de las incertidumbres de los datos, <span class="math notranslate nohighlight">\(w_i = 1/\alpha_i^2\)</span>.</p>
+</div>
+<div class="section" id="ejemplo-bola-rodando-parte-4">
+<span id="subsec-ejemplobola5"></span><h2><span class="section-number">7.1.3. </span>Ejemplo: bola rodando (parte 4)<a class="footnote-reference brackets" href="#ejemplo" id="id6">5</a><a class="headerlink" href="#ejemplo-bola-rodando-parte-4" title="Enlazar permanentemente con este título">#</a></h2>
+<p>En el ejemplo de la bola rodando, cuando se linearizó la función al dividir la incertidumbre por <span class="math notranslate nohighlight">\(t\)</span>, la nueva incertidumbre de la nueva variable <span class="math notranslate nohighlight">\(x/t\)</span> es diferente para cada valor de la nueva variable. Para hallar la pendiente, el intercepto, y las incertidumbres de la línea que se ajusta a los valores experimentales, se deben usar las expresiones de la anterior sección. En la <a class="reference internal" href="#tabla-bola5"><span class="std std-numref">Tabla 7.1</span></a> y la <a class="reference internal" href="#fig-bola5"><span class="std std-numref">Figura 7.1</span></a> se comparan los resultados para el caso en que no se incluyen las incetidumbres de la posición <span class="math notranslate nohighlight">\(x\)</span> (con <span class="math notranslate nohighlight">\(\alpha_{ic}\)</span>), con respecto al caso en que se tienen en cuenta las incertidumbres de la posición <span class="math notranslate nohighlight">\(x\)</span> (con <span class="math notranslate nohighlight">\(w_i\)</span>).</p>
+<table class="table" id="tabla-bola5">
+<caption><span class="caption-number">Tabla 7.1 </span><span class="caption-text">Resultados del ajuste lineal usando la incertidumbre común y los pesos <span class="math notranslate nohighlight">\(w_i\)</span>.</span><a class="headerlink" href="#tabla-bola5" title="Enlace permanente a esta tabla">#</a></caption>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Parámetro</p></th>
+<th class="head"><p>Con <span class="math notranslate nohighlight">\(\alpha_{ic}\)</span></p></th>
+<th class="head"><p>Usando <span class="math notranslate nohighlight">\(w_i\)</span></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(m\)</span>/(cm/s<span class="math notranslate nohighlight">\(^2\)</span>)</p></td>
+<td><p><span class="math notranslate nohighlight">\(-8.8 \pm 0.9\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(-9 \pm 4\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(c\)</span>/(cm/s)</p></td>
+<td><p><span class="math notranslate nohighlight">\(70.7 \pm 0.7\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(71 \pm 4\)</span></p></td>
+</tr>
+</tbody>
+</table>
+<p>En la tabla se puede observar que cuando no se tuvo en cuenta la incertidumbre del desplazamiento, por lo que se usó la incertidumbre común, las incertidumbres obtenidas de la pendiente y el intercepto fueron menores que para el caso en que se tienen en cuenta las incertidumbres del desplazamiento, puesto que, como se observa en la figura, algunos de los desplazamientos medidos experimentalmente, tienen una incertidumbre que se incrementa de manera significativa en el proceso de linearización. Esto es de esperarse, porque el método de mínimos cuadrados con pesos le da mayor importancia, en el ajuste, a los puntos con mayor peso (menor incertidumbre).</p>
+<div class="figure align-default" id="fig-bola5">
+<a class="reference internal image-reference" href="../../_images/bola5.png"><img alt="../../_images/bola5.png" src="../../_images/bola5.png" style="width: 1600.0px; height: 800.0px;" /></a>
+<p class="caption"><span class="caption-number">Figura 7.1 </span><span class="caption-text">Razón entre la posición de la bola y el tiempo, en función del tiempo.</span><a class="headerlink" href="#fig-bola5" title="Enlace permanente a esta imagen">#</a></p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">Ver también</p>
+<p>Sobre mínimos cuadrados y ajuste lineal pueden consultar el capítulo 8 de <span id="id7">[<a class="reference internal" href="../volumen-ref.html#id7" title="John Taylor. An Introduction to Error Analysis: The Study of Uncertainties in Physical Measurements. University Science Books, Sausalito, California, 1996.">Taylor, 1996</a>]</span>, o las secciones 6.3 y 5.2.1 de <span id="id8">[<a class="reference internal" href="../volumen-ref.html#id2" title="Ifan G Hughes and Thomas P.A. Hase. Measurements and their uncertainties. Oxford University press, 1 edition, 2010. ISBN 978-0-19-956632-7.">Hughes and Hase, 2010</a>]</span>.</p>
+</div>
+<hr class="footnotes docutils" />
+<dl class="footnote brackets">
+<dt class="label" id="alpha"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
+<dd><p>Para este caso se supone que todas las variables <span class="math notranslate nohighlight">\(y_i\)</span> tienen la misma incertidumbre <span class="math notranslate nohighlight">\(\alpha\)</span>, y que la distribución es normal, por lo que en un experimento hay que asegurar que esto se cumpla al menos de forma aproximada. No obstante, gracias al teorema del límite central, siempre se puede lograr que la distribución de los <span class="math notranslate nohighlight">\(y_i\)</span> sea una distribución normal.</p>
+</dd>
+<dt class="label" id="ajustan"><span class="brackets"><a class="fn-backref" href="#id2">2</a></span></dt>
+<dd><p>La pregunta pudo ser también: ¿los datos se ajustan correctamente a una línea?</p>
+</dd>
+<dt class="label" id="chi2"><span class="brackets"><a class="fn-backref" href="#id3">3</a></span></dt>
+<dd><p>La variable estadística <span class="math notranslate nohighlight">\(\chi^2 = -2\tilde\chi^2\)</span>, conocida en el habla hispana como «chi-cuadrado», pero que se debe pronunciar como <em>qui-cuadrado</em>, será de gran importancia en futuras secciones (<a class="reference internal" href="../part9/chiCuadrado.html#sec-chicuadrado"><span class="std std-numref">Sección 9.2</span></a>) para la cuantificación de la calidad de los ajustes, o la verificación de hipótesis.</p>
+</dd>
+<dt class="label" id="otros"><span class="brackets"><a class="fn-backref" href="#id4">4</a></span></dt>
+<dd><p>La incertidumbre común se puede usar en modelos nolineales. Simplemente se reemplaza <span class="math notranslate nohighlight">\(\mu_i\)</span> por la función correspondiente al modelo.</p>
+</dd>
+<dt class="label" id="ejemplo"><span class="brackets"><a class="fn-backref" href="#id6">5</a></span></dt>
+<dd><p>Las otras partes del problema están en la <a class="reference internal" href="../part1/tablas.html#subsec-ejemplobola1"><span class="std std-numref">Sección 1.4.1</span></a>, <a class="reference internal" href="../part3/graficas.html#subsec-ejemplobola2"><span class="std std-numref">Sección 4.1.1</span></a>, <a class="reference internal" href="../part3/ajusteLineal.html#subsec-ejemplobola4"><span class="std std-numref">Sección 4.3.1</span></a>, y en la <a class="reference internal" href="../part3/linearizacion.html#subsec-ejemplobola3"><span class="std std-numref">Sección 4.2.1</span></a>.</p>
+</dd>
+</dl>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "executablebooks/jupyter-book",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./docs\part7"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="intro-ajuste.html"
+       title="página anterior">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">anterior</p>
+        <p class="prev-next-title"><span class="section-number">7. </span>Método de ajuste de datos</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="AjusteNolineal.html"
+       title="siguiente página">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">siguiente</p>
+        <p class="prev-next-title"><span class="section-number">7.2. </span>Método de ajuste no lineal</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contenido
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#incertidumbre-comun">7.1.1. Incertidumbre común</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#minimos-cuadrados-con-incetidumbres-no-uniformes">7.1.2. Mínimos cuadrados con incetidumbres no uniformes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplo-bola-rodando-parte-4">7.1.3. Ejemplo: bola rodando (parte 4)</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+Por Edgar Rueda, profesor asociado, Universidad de Antioquia
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2023. versión 0.2.1.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" /></a><br /><span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">Notas de Físca Experimental</span> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International License</a>.
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
